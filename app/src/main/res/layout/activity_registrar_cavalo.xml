@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegistrarCavalo"
-    android:background="@color/white">
+    android:background="@color/white"
+    >
 
     <TextView
         android:id="@+id/nome"
@@ -49,10 +50,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.016"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/rgcav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Registrar Cavalo"
@@ -64,6 +66,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nome"
         app:layout_constraintVertical_bias="0.097" />
+
+    <View
+        android:id="@+id/containerComponents"
+        style="@style/ContainerComponents"
+        android:layout_marginTop="36dp"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rgcav" />
+    
+    <EditText
+        style="@style/Edit_Text"
+        android:hint="nome"
+        android:textColorHint="@color/ma"
+        app:layout_constraintStart_toStartOf="@id/containerComponents"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents"
+        app:layout_constraintTop_toTopOf="@id/containerComponents"
+        />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
