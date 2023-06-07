@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegistrarRemedios"
+    tools:context=".RegistraPagamento"
     android:background="@color/white">
 
     <TextView
@@ -56,8 +56,7 @@
         android:id="@+id/rgrac"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="Registrar Remédios"
+        android:text="Registrar Pagamentos"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -72,11 +71,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/input_bg"
         android:ems="10"
-        android:hint="Nome do Remédio"
+        android:hint="Tipo do Pagamento"
         android:inputType="text"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
@@ -114,7 +113,7 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/input_bg"
         android:ems="10"
-        android:hint="Quantidade (ml)"
+        android:hint="Status "
         android:inputType="number|numberDecimal"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
@@ -134,7 +133,7 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/input_bg"
         android:ems="10"
-        android:hint="Data de Chegada"
+        android:hint="Data "
         android:inputType="date"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
@@ -142,47 +141,26 @@
         android:paddingBottom="10dp"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/inputStatus"
+        app:layout_constraintEnd_toEndOf="@+id/inputValorPagamento"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/inputStatus"
+        app:layout_constraintStart_toStartOf="@+id/inputValorPagamento"
         app:layout_constraintTop_toBottomOf="@+id/inputStatus" />
 
-
-
     <Button
-        android:id="@+id/btnRegistraRemedio"
+        android:id="@+id/btnRegistraPagamento"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="75dp"
         android:background="@drawable/btnregistra"
         android:fontFamily="@font/alegreya_bold"
         android:text="Registra"
+        android:textColor="@color/white"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/inputDataVencimento"
-        app:layout_constraintHorizontal_bias="0.987"
-        app:layout_constraintStart_toStartOf="@+id/inputDataVencimento"
-        app:layout_constraintTop_toBottomOf="@+id/inputDataVencimento"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <EditText
-        android:id="@+id/inputDataVencimento"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/input_bg"
-        android:ems="10"
-        android:hint="Data de Vencimento"
-        android:inputType="textPersonName"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/inputChegada"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.971"
         app:layout_constraintStart_toStartOf="@+id/inputChegada"
-        app:layout_constraintTop_toBottomOf="@+id/inputChegada" />
-
+        app:layout_constraintTop_toBottomOf="@+id/inputChegada"
+        app:layout_constraintVertical_bias="0.297" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

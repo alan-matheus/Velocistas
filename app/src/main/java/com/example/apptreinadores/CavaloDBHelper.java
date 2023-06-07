@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.security.PrivateKey;
+import java.util.Collection;
 
 public class CavaloDBHelper extends SQLiteOpenHelper {
 
@@ -48,6 +49,7 @@ public class CavaloDBHelper extends SQLiteOpenHelper {
         db.insert(TABELA_CAVALO, null, values);
         db.close();
     }
+
 
 
 }

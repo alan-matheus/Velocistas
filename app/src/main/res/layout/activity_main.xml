@@ -43,13 +43,25 @@
         app:layout_constraintVertical_bias="0.446"
         tools:ignore="MissingConstraints" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv"
-        android:layout_width="409dp"
-        android:layout_height="521dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="137dp"
-        tools:ignore="MissingConstraints" />
+
+
+    <LinearLayout
+        android:layout_width="413dp"
+        android:layout_height="461dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv"
+            android:layout_width="match_parent"
+            android:layout_height="521dp"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="137dp" />
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

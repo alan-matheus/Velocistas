@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegistrarRemedios"
+    tools:context=".RegistrarResultado"
     android:background="@color/white">
+
 
     <TextView
         android:id="@+id/nome"
@@ -53,11 +54,11 @@
         />
 
     <TextView
-        android:id="@+id/rgrac"
+        android:id="@+id/rges"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:text="Registrar Remédios"
+        android:text="Registrar Resultados"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -72,11 +73,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/input_bg"
         android:ems="10"
-        android:hint="Nome do Remédio"
+        android:hint="Resultado"
         android:inputType="text"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
@@ -85,18 +86,19 @@
         android:textColor="#000000"
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rgrac" />
+        app:layout_constraintTop_toTopOf="@+id/rges" />
 
     <EditText
-        android:id="@+id/inputValorPagamento"
+        android:id="@+id/inputTerreno"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/input_bg"
         android:ems="10"
-        android:hint="Valor"
-        android:inputType="number|numberDecimal"
+        android:hint="Terreno"
+        android:inputType="textPersonName"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingRight="10dp"
@@ -108,33 +110,32 @@
         app:layout_constraintTop_toBottomOf="@+id/inputTipoPagamento" />
 
     <EditText
-        android:id="@+id/inputStatus"
+        android:id="@+id/inputTempo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/input_bg"
         android:ems="10"
-        android:hint="Quantidade (ml)"
-        android:inputType="number|numberDecimal"
+        android:hint="Tempo (segundos)"
+        android:inputType="numberDecimal"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/inputTipoPagamento"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/inputTipoPagamento"
-        app:layout_constraintTop_toBottomOf="@+id/inputValorPagamento" />
+        app:layout_constraintEnd_toEndOf="@+id/inputTerreno"
+        app:layout_constraintStart_toStartOf="@+id/inputTerreno"
+        app:layout_constraintTop_toBottomOf="@+id/inputTerreno" />
 
     <EditText
-        android:id="@+id/inputChegada"
+        android:id="@+id/inputData"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/input_bg"
         android:ems="10"
-        android:hint="Data de Chegada"
+        android:hint="Data"
         android:inputType="date"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
@@ -142,36 +143,18 @@
         android:paddingBottom="10dp"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/inputStatus"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/inputStatus"
-        app:layout_constraintTop_toBottomOf="@+id/inputStatus" />
-
-
-
-    <Button
-        android:id="@+id/btnRegistraRemedio"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/btnregistra"
-        android:fontFamily="@font/alegreya_bold"
-        android:text="Registra"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/inputDataVencimento"
-        app:layout_constraintHorizontal_bias="0.987"
-        app:layout_constraintStart_toStartOf="@+id/inputDataVencimento"
-        app:layout_constraintTop_toBottomOf="@+id/inputDataVencimento"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintEnd_toEndOf="@+id/inputTempo"
+        app:layout_constraintStart_toStartOf="@+id/inputTempo"
+        app:layout_constraintTop_toBottomOf="@+id/inputTempo" />
 
     <EditText
-        android:id="@+id/inputDataVencimento"
+        android:id="@+id/inputJockey"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/input_bg"
         android:ems="10"
-        android:hint="Data de Vencimento"
+        android:hint="Jockey"
         android:inputType="textPersonName"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
@@ -179,10 +162,44 @@
         android:paddingBottom="10dp"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/inputChegada"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/inputChegada"
-        app:layout_constraintTop_toBottomOf="@+id/inputChegada" />
+        app:layout_constraintEnd_toEndOf="@+id/inputData"
+        app:layout_constraintStart_toStartOf="@+id/inputData"
+        app:layout_constraintTop_toBottomOf="@+id/inputData" />
+
+    <EditText
+        android:id="@+id/inputDistancia"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/input_bg"
+        android:ems="10"
+        android:hint="Distância"
+        android:inputType="textPersonName"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/inputJockey"
+        app:layout_constraintStart_toStartOf="@+id/inputJockey"
+        app:layout_constraintTop_toBottomOf="@+id/inputJockey" />
+
+    <Button
+        android:id="@+id/btnSalvaResultado"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/btnregistra"
+        android:fontFamily="@font/alegreya_bold"
+        android:text="Registra"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/inputDistancia"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/inputDistancia"
+        app:layout_constraintTop_toBottomOf="@+id/inputDistancia"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

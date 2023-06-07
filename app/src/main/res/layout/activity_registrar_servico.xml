@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegistrarRemedios"
+    tools:context=".RegistrarServico"
     android:background="@color/white">
 
     <TextView
@@ -53,11 +53,10 @@
         />
 
     <TextView
-        android:id="@+id/rgrac"
+        android:id="@+id/rgcav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="Registrar Remédios"
+        android:text="Registrar Serviço"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -67,17 +66,27 @@
         app:layout_constraintTop_toBottomOf="@+id/nome"
         app:layout_constraintVertical_bias="0.097" />
 
+    <View
+        android:id="@+id/containerComponents"
+        style="@style/ContainerComponents"
+        android:layout_width="411dp"
+        android:layout_height="430dp"
+        android:layout_marginTop="48dp"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rgcav" />
+
     <EditText
         android:id="@+id/inputTipoPagamento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/input_bg"
         android:ems="10"
-        android:hint="Nome do Remédio"
-        android:inputType="text"
+        android:hint="Nome"
+        android:inputType="textPersonName"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingRight="10dp"
@@ -86,7 +95,7 @@
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rgrac" />
+        app:layout_constraintTop_toBottomOf="@+id/rgcav" />
 
     <EditText
         android:id="@+id/inputValorPagamento"
@@ -95,8 +104,8 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/input_bg"
         android:ems="10"
-        android:hint="Valor"
-        android:inputType="number|numberDecimal"
+        android:hint="Custo"
+        android:inputType="numberDecimal"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingRight="10dp"
@@ -108,33 +117,13 @@
         app:layout_constraintTop_toBottomOf="@+id/inputTipoPagamento" />
 
     <EditText
-        android:id="@+id/inputStatus"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/input_bg"
-        android:ems="10"
-        android:hint="Quantidade (ml)"
-        android:inputType="number|numberDecimal"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/inputTipoPagamento"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/inputTipoPagamento"
-        app:layout_constraintTop_toBottomOf="@+id/inputValorPagamento" />
-
-    <EditText
         android:id="@+id/inputChegada"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/input_bg"
         android:ems="10"
-        android:hint="Data de Chegada"
+        android:hint="Data do Serviço"
         android:inputType="date"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
@@ -142,47 +131,25 @@
         android:paddingBottom="10dp"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/inputStatus"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/inputStatus"
-        app:layout_constraintTop_toBottomOf="@+id/inputStatus" />
-
-
+        app:layout_constraintEnd_toEndOf="@+id/inputValorPagamento"
+        app:layout_constraintStart_toStartOf="@+id/inputValorPagamento"
+        app:layout_constraintTop_toBottomOf="@+id/inputValorPagamento" />
 
     <Button
-        android:id="@+id/btnRegistraRemedio"
+        android:id="@+id/btnRegistraServico"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="75dp"
         android:background="@drawable/btnregistra"
         android:fontFamily="@font/alegreya_bold"
         android:text="Registra"
+        android:textColor="@color/white"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/inputDataVencimento"
-        app:layout_constraintHorizontal_bias="0.987"
-        app:layout_constraintStart_toStartOf="@+id/inputDataVencimento"
-        app:layout_constraintTop_toBottomOf="@+id/inputDataVencimento"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <EditText
-        android:id="@+id/inputDataVencimento"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/input_bg"
-        android:ems="10"
-        android:hint="Data de Vencimento"
-        android:inputType="textPersonName"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/inputChegada"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.971"
         app:layout_constraintStart_toStartOf="@+id/inputChegada"
-        app:layout_constraintTop_toBottomOf="@+id/inputChegada" />
-
+        app:layout_constraintTop_toBottomOf="@+id/inputChegada"
+        app:layout_constraintVertical_bias="0.297" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

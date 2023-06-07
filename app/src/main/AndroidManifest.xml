@@ -13,13 +13,23 @@
         android:theme="@style/Theme.AppTreinadores"
         tools:targetApi="31">
         <activity
+            android:name=".RegistraPagamento"
+            android:exported="false" />
+        <activity
+            android:name=".RegistrarServico"
+            android:exported="false" />
+        <activity
+            android:name=".RegistrarResultado"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
             android:name=".RegistrarRemedios"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".RegistrarRacoes"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".RegistrarCavalo"
             android:exported="false"
