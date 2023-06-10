@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--suppress ALL -->
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,6 +9,8 @@
     tools:context=".MainActivity"
     android:orientation="vertical"
     android:background="@color/white">
+
+
 
     <TextView
         android:id="@+id/nome"
@@ -44,24 +48,17 @@
         tools:ignore="MissingConstraints" />
 
 
-
-    <LinearLayout
-        android:layout_width="413dp"
-        android:layout_height="461dp"
-        android:orientation="vertical"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv"
+        android:layout_width="match_parent"
+        android:layout_height="559dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv"
-            android:layout_width="match_parent"
-            android:layout_height="521dp"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="137dp" />
-
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/btnRegistra"
+        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

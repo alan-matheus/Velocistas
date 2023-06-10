@@ -1,5 +1,6 @@
 package com.example.apptreinadores;
 
+
 public class Cavalo {
 
     private String nome;
@@ -7,11 +8,12 @@ public class Cavalo {
     private String dataChegada;
 
     public Cavalo(String nome, String raca, String dataChegada) {
+
         this.nome = nome;
         this.raca = raca;
         this.dataChegada = dataChegada;
-
     }
+
 
     public String getNome() {
         return nome;
