@@ -3,6 +3,7 @@ package com.example.apptreinadores;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,12 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class CavaloAdapter extends RecyclerView.Adapter<CavaloAdapter.ViewHolder> {
+public class AdapterCavalo extends RecyclerView.Adapter<AdapterCavalo.ViewHolder> {
 
     private List<Cavalo> cavaloList;
+    private OnItemClickListener listener;
 
-    public CavaloAdapter(List<Cavalo> cavaloList) {
+
+    public AdapterCavalo(List<Cavalo> cavaloList, OnItemClickListener listener) {
         this.cavaloList = cavaloList;
+        this.listener = listener;
+
     }
 
     @NonNull
@@ -39,7 +44,7 @@ public class CavaloAdapter extends RecyclerView.Adapter<CavaloAdapter.ViewHolder
         return cavaloList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView textViewNome;
         private TextView textViewRaca;
         private TextView textViewChegada;
@@ -50,5 +55,17 @@ public class CavaloAdapter extends RecyclerView.Adapter<CavaloAdapter.ViewHolder
             textViewRaca = itemView.findViewById(R.id.textViewRaca);
             textViewChegada = itemView.findViewById(R.id.textViewChegada);
         }
+
+        @Override
+        public void onClick(View v) {
+            int position = getBindingAdapterPosition();
+            Cavalo cavalo = AdapterCavalo.this.cavaloList.get(position);
+            AdapterCavalo.this.listener.onItemClick(cavalo);
+        }
+
+    }
+
+    public interface OnItemClickListener{
+        void onItemClick(Cavalo cavalo);
     }
 }

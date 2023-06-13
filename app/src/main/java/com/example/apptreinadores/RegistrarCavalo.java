@@ -14,7 +14,7 @@ import com.example.apptreinadores.databinding.ActivityRegistrarCavaloBinding;
 public class RegistrarCavalo extends AppCompatActivity {
 
     ActivityRegistrarCavaloBinding binding;
-    private CavaloDBHelper dbHelper;
+    private DBHelperCavalo dbHelper;
 
     private TextWatcher capitalizeTextWatcher = new TextWatcher() {
 
@@ -47,7 +47,7 @@ public class RegistrarCavalo extends AppCompatActivity {
         binding = ActivityRegistrarCavaloBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        dbHelper = new CavaloDBHelper(this);
+        dbHelper = new DBHelperCavalo(this);
         binding.inputNomeCavalo.addTextChangedListener(capitalizeTextWatcher);
 
 

@@ -1,7 +1,9 @@
 package com.example.apptreinadores;
 
 
-public class Cavalo {
+import java.io.Serializable;
+
+public class Cavalo implements Serializable {
 
     private String nome;
     private String raca;

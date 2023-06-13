@@ -7,24 +7,23 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
 
 import java.util.ArrayList;
 
 import java.util.List;
 
-public class CavaloDBHelper extends SQLiteOpenHelper {
+public class DBHelperCavalo extends SQLiteOpenHelper {
 
     private static final String NOME_BASE = "treinadores";
     private static final int VERSAO_BASE = 1;
-    private static final String NOME_TABELA = "cavalo";
-    private static final String COLUNA_ID = "id";
+    public static final String NOME_TABELA = "cavalo";
+    public static final String COLUNA_ID = "id";
     private static final String COLUNA_NOME = "nome";
     private static final String COLUNA_RACA = "raca";
     private static final String COLUNA_CHEGADA = "dataChegada";
 
-    public CavaloDBHelper(Context context){
+    public DBHelperCavalo(Context context){
         super(context, NOME_BASE, null, VERSAO_BASE);
     }
 
