@@ -28,9 +28,9 @@ public class MainActivity extends AppCompatActivity implements AdapterCavalo.OnI
         cavaloList = new ArrayList<>();
         ca = new AdapterCavalo(cavaloList, this);
 
-        binding.rv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+         binding.rv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
-        binding.rv.setAdapter(ca);
+         binding.rv.setAdapter(ca);
 
         carregaDados();
 

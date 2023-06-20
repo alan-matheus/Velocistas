@@ -78,7 +78,7 @@ public class RegistrarCavalo extends AppCompatActivity {
             return;
         }
 
-        Cavalo c = new Cavalo(nome, raca, chegada);
+        Cavalo c = new Cavalo(null, nome, raca, chegada);
         dbHelper.addCavalo(c);
         Toast.makeText(this, "Cavalo Adicionado com sucesso!", Toast.LENGTH_LONG).show();
 

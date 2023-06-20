@@ -1,9 +1,17 @@
 package com.example.apptreinadores;
 
+import android.annotation.SuppressLint;
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
 import com.example.apptreinadores.DBHelperCavalo;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DBHelperRemedio extends SQLiteOpenHelper {
     private DBHelperCavalo dbHelperCavalo;
@@ -28,7 +36,7 @@ public class DBHelperRemedio extends SQLiteOpenHelper {
         String createTableQuery = "CREATE TABLE " + NOME_TABELA + " (" +
                 COLUNA_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUNA_NOME + " TEXT, " +
-                COLUNA_QUANTIDADE + " INTEGER, " +
+                COLUNA_QUANTIDADE + " REAL, " +
                 COLUNA_VALOR + " REAL, " +
                 COLUNA_VALIDADE + " TEXT, " +
                 COLUNA_CHEGADA + " TEXT, " +
@@ -46,6 +54,65 @@ public class DBHelperRemedio extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(dropTableQuery);
         onCreate(sqLiteDatabase);
     }
+
+    public void addRemedio(Remedio r, Cavalo c){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        values.put(COLUNA_NOME, r.getNome());
+        values.put(COLUNA_QUANTIDADE, r.getQuantidade());
+        values.put(COLUNA_VALIDADE, r.getDataVencimento());
+        values.put(COLUNA_CHEGADA, r.getDataChegada());
+        values.put(COLUNA_VALOR, r.getValor());
+        values.put(COLUNA_ID_CAVALO, c.getId());
+
+        db.insert("remedio", null, values);
+        db.close();
+
+    }
+
+    public List<Remedio> getRemediosByCavaloId(Integer cavaloId) {
+
+        Log.d("DBHelperRemedio", "getRemediosByCavaloId called with cavaloId: " + cavaloId);
+
+        List<Remedio> remedioList = new ArrayList<>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String[] colunas = {COLUNA_ID, COLUNA_NOME, COLUNA_QUANTIDADE, COLUNA_VALOR, COLUNA_VALIDADE, COLUNA_CHEGADA};
+
+        String selecao = COLUNA_ID_CAVALO + " = ?";
+        String[] selecaoArgs = {String.valueOf(cavaloId)};
+
+        Cursor cursor = db.query(NOME_TABELA, colunas, selecao, selecaoArgs, null, null, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(cursor.getColumnIndex(COLUNA_ID));
+                String nome = cursor.getString(cursor.getColumnIndex(COLUNA_NOME));
+                double quantidade = cursor.getDouble(cursor.getColumnIndex(COLUNA_QUANTIDADE));
+                double valor = cursor.getDouble(cursor.getColumnIndex(COLUNA_VALOR));
+                String dataVencimento = cursor.getString(cursor.getColumnIndex(COLUNA_VALIDADE));
+                String dataChegada = cursor.getString(cursor.getColumnIndex(COLUNA_CHEGADA));
+
+                Remedio remedio = new Remedio(nome, quantidade, valor, dataVencimento, dataChegada);
+
+                remedioList.add(remedio);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return remedioList;
+    }
+
+
+
+
+
 
 
 

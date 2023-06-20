@@ -74,7 +74,7 @@ public class DBHelperCavalo extends SQLiteOpenHelper {
                 @SuppressLint("Range") String raca = cursor.getString(cursor.getColumnIndex(COLUNA_RACA));
                 @SuppressLint("Range") String dataChegada = cursor.getString(cursor.getColumnIndex(COLUNA_CHEGADA));
 
-                Cavalo cavalo = new Cavalo(nome, raca, dataChegada);
+                Cavalo cavalo = new Cavalo(null, nome, raca, dataChegada);
                 cavaloList.add(cavalo);
             } while (cursor.moveToNext());
         }

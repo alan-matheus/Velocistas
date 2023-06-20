@@ -1,16 +1,16 @@
 package com.example.apptreinadores;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Remedio {
+public class Remedio implements Serializable {
     private String nome;
-    private int quantidade;
+    private double quantidade;
     private double valor;
-    private Date dataVencimento;
-    private Date dataChegada;
+    private String dataVencimento;
+    private String dataChegada;
 
-
-    public Remedio(String nome, int quantidade, double valor, Date dataVencimento, Date dataChegada) {
+    public Remedio(String nome, double quantidade, double valor, String dataVencimento, String dataChegada) {
         this.nome = nome;
         this.quantidade = quantidade;
         this.valor = valor;
@@ -28,11 +28,11 @@ public class Remedio {
         this.nome = nome;
     }
 
-    public int getQuantidade() {
+    public double getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade(double quantidade) {
         this.quantidade = quantidade;
     }
 
@@ -44,19 +44,19 @@ public class Remedio {
         this.valor = valor;
     }
 
-    public Date getDataVencimento() {
+    public String  getDataVencimento() {
         return dataVencimento;
     }
 
-    public void setDataVencimento(Date dataVencimento) {
+    public void setDataVencimento(String dataVencimento) {
         this.dataVencimento = dataVencimento;
     }
 
-    public Date getDataChegada() {
+    public String getDataChegada() {
         return dataChegada;
     }
 
-    public void setDataChegada(Date dataChegada) {
+    public void setDataChegada(String dataChegada) {
         this.dataChegada = dataChegada;
     }
 
