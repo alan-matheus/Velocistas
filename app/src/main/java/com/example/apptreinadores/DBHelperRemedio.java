@@ -26,6 +26,8 @@ public class DBHelperRemedio extends SQLiteOpenHelper {
     private static final String COLUNA_CHEGADA = "data_chegada";
     private static final String COLUNA_ID_CAVALO = "id_cavalo";
 
+
+
     public DBHelperRemedio(Context context, DBHelperCavalo dbHelperCavalo){
         super(context, NOME_BASE, null, VERSAO_BASE);
         this.dbHelperCavalo = dbHelperCavalo;
@@ -33,7 +35,7 @@ public class DBHelperRemedio extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db){
-        String createTableQuery = "CREATE TABLE " + NOME_TABELA + " (" +
+        String createTableQuery = "CREATE TABLE IF NOT EXISTS " + NOME_TABELA + " (" +
                 COLUNA_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUNA_NOME + " TEXT, " +
                 COLUNA_QUANTIDADE + " REAL, " +
@@ -44,6 +46,7 @@ public class DBHelperRemedio extends SQLiteOpenHelper {
                 "FOREIGN KEY (" + COLUNA_ID_CAVALO + ") REFERENCES " +
                 DBHelperCavalo.NOME_TABELA + "(" + dbHelperCavalo.COLUNA_ID + ")" +
                 ")";
+
 
         db.execSQL(createTableQuery);
     }
@@ -69,7 +72,7 @@ public class DBHelperRemedio extends SQLiteOpenHelper {
         values.put(COLUNA_ID_CAVALO, c.getId());
 
         db.insert("remedio", null, values);
-        db.close();
+        //db.close();
 
     }
 
@@ -90,14 +93,14 @@ public class DBHelperRemedio extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             do {
-                int id = cursor.getInt(cursor.getColumnIndex(COLUNA_ID));
-                String nome = cursor.getString(cursor.getColumnIndex(COLUNA_NOME));
-                double quantidade = cursor.getDouble(cursor.getColumnIndex(COLUNA_QUANTIDADE));
-                double valor = cursor.getDouble(cursor.getColumnIndex(COLUNA_VALOR));
-                String dataVencimento = cursor.getString(cursor.getColumnIndex(COLUNA_VALIDADE));
-                String dataChegada = cursor.getString(cursor.getColumnIndex(COLUNA_CHEGADA));
+                @SuppressLint("Range") int id = cursor.getInt(cursor.getColumnIndex(COLUNA_ID));
+                @SuppressLint("Range") String nome = cursor.getString(cursor.getColumnIndex(COLUNA_NOME));
+                @SuppressLint("Range") double quantidade = cursor.getDouble(cursor.getColumnIndex(COLUNA_QUANTIDADE));
+                @SuppressLint("Range") double valor = cursor.getDouble(cursor.getColumnIndex(COLUNA_VALOR));
+                @SuppressLint("Range") String dataVencimento = cursor.getString(cursor.getColumnIndex(COLUNA_VALIDADE));
+                @SuppressLint("Range") String dataChegada = cursor.getString(cursor.getColumnIndex(COLUNA_CHEGADA));
 
-                Remedio remedio = new Remedio(nome, quantidade, valor, dataVencimento, dataChegada);
+                Remedio remedio = new Remedio(id, nome, quantidade, valor, dataVencimento, dataChegada);
 
                 remedioList.add(remedio);
             } while (cursor.moveToNext());

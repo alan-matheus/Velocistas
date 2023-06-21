@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity implements AdapterCavalo.OnI
     private AdapterCavalo ca;
     private List<Cavalo> cavaloList;
     private DBHelperCavalo dbHelper;
+    private DBHelperRemedio dbHelperRemedio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements AdapterCavalo.OnI
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         dbHelper = new DBHelperCavalo(this);
+        dbHelperRemedio = new DBHelperRemedio(this, dbHelper);
         cavaloList = new ArrayList<>();
         ca = new AdapterCavalo(cavaloList, this);
 
@@ -47,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements AdapterCavalo.OnI
 
     public void onItemClick(Cavalo cavalo){
         Intent intent = new Intent(MainActivity.this, Menu.class);
+        intent.putExtra("cavaloId", cavalo.getId());
+        System.out.println(cavalo.getId());
         intent.putExtra("cavalo", cavalo);
         startActivity(intent);
     }

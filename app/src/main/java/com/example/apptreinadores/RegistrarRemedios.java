@@ -62,7 +62,7 @@ public class RegistrarRemedios extends AppCompatActivity {
             return;
         }
 
-        Remedio remedio = new Remedio(nome, quantidade, valor, dataVencimento, dataChegada);
+        Remedio remedio = new Remedio(null, nome, quantidade, valor, dataVencimento, dataChegada);
         dbHelperRemedio.addRemedio(remedio, cavalo);
         Toast.makeText(this, "Remédio adicionado com sucesso!", Toast.LENGTH_LONG).show();
         limparCampos();

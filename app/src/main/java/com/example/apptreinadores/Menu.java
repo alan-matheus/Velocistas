@@ -36,6 +36,7 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 Intent i = new Intent(Menu.this, ListarRemedios.class);
+
                 i.putExtra("cavalo", cavalo);
                 i.putExtra("cavaloId", cavaloId);
                 startActivity(i);

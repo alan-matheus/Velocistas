@@ -4,13 +4,15 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Remedio implements Serializable {
+    private Integer id;
     private String nome;
     private double quantidade;
     private double valor;
     private String dataVencimento;
     private String dataChegada;
 
-    public Remedio(String nome, double quantidade, double valor, String dataVencimento, String dataChegada) {
+    public Remedio(Integer id, String nome, double quantidade, double valor, String dataVencimento, String dataChegada) {
+        this.id = id;
         this.nome = nome;
         this.quantidade = quantidade;
         this.valor = valor;
@@ -19,6 +21,13 @@ public class Remedio implements Serializable {
 
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
