@@ -53,5 +53,56 @@
         app:layout_constraintTop_toBottomOf="@+id/txtNome"
         tools:ignore="MissingConstraints" />
 
+    <Button
+        android:id="@+id/btnRacoes"
+        android:layout_width="215dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/background_button"
+        android:text="rações"
+        android:textColor="@color/ma"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRemedios"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btnPagamentos"
+        android:layout_width="215dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/background_button"
+        android:text="pagamentos"
+        android:textColor="@color/ma"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRacoes"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btnResultados"
+        android:layout_width="215dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/background_button"
+        android:text="resultados"
+        android:textColor="@color/ma"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnPagamentos"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btnTempo"
+        android:layout_width="215dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/background_button"
+        android:text="Tempo Treino"
+        android:textColor="@color/ma"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnResultados"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

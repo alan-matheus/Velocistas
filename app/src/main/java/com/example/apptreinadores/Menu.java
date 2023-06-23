@@ -10,6 +10,7 @@ import com.example.apptreinadores.databinding.ActivityMenuBinding;
 
 public class Menu extends AppCompatActivity {
     private Cavalo cavalo;
+    private Integer cavaloId;
     ActivityMenuBinding binding;
 
     @Override
@@ -19,7 +20,7 @@ public class Menu extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         cavalo = (Cavalo) getIntent().getSerializableExtra("cavalo");
-        Integer cavaloId = getIntent().getIntExtra("cavaloId", -1);
+        cavaloId = getIntent().getIntExtra("cavaloId", -1);
 
         binding.txtNome.setText(cavalo.getNome());
 
@@ -44,6 +45,47 @@ public class Menu extends AppCompatActivity {
             }
 
         });
+
+        binding.btnRacoes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Menu.this, ListarRacoes.class);
+                i.putExtra("cavalo", cavalo);
+                i.putExtra("cavaloId", cavaloId);
+
+            }
+        });
+
+        binding.btnPagamentos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Menu.this, ListarPagamentos.class);
+                i.putExtra("cavalo", cavalo);
+                i.putExtra("cavaloId", cavaloId);
+
+            }
+        });
+
+        binding.btnResultados.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Menu.this, ListarResultados.class);
+                i.putExtra("cavalo", cavalo);
+                i.putExtra("cavaloId", cavaloId);
+
+            }
+        });
+
+        binding.btnTempo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Menu.this, ListarTempos.class);
+                i.putExtra("cavalo", cavalo);
+                i.putExtra("cavaloId", cavaloId);
+
+            }
+        });
+
 
 
 

@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class RegistraPagamento extends AppCompatActivity {
+public class ListarResultados extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registra_pagamento);
+        setContentView(R.layout.activity_listar_resultados);
     }
 }

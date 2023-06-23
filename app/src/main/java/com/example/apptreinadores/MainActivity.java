@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity implements AdapterCavalo.OnI
     private AdapterCavalo ca;
     private List<Cavalo> cavaloList;
     private DBHelperCavalo dbHelper;
-    private DBHelperRemedio dbHelperRemedio;
+    private SQLiteDatabase dbCavalo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,13 +27,12 @@ public class MainActivity extends AppCompatActivity implements AdapterCavalo.OnI
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         dbHelper = new DBHelperCavalo(this);
-        dbHelperRemedio = new DBHelperRemedio(this, dbHelper);
+        dbCavalo = dbHelper.getWritableDatabase();
+
         cavaloList = new ArrayList<>();
         ca = new AdapterCavalo(cavaloList, this);
-
-         binding.rv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-
-         binding.rv.setAdapter(ca);
+        binding.rv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        binding.rv.setAdapter(ca);
 
         carregaDados();
 
@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity implements AdapterCavalo.OnI
     public void onItemClick(Cavalo cavalo){
         Intent intent = new Intent(MainActivity.this, Menu.class);
         intent.putExtra("cavaloId", cavalo.getId());
-        System.out.println(cavalo.getId());
         intent.putExtra("cavalo", cavalo);
         startActivity(intent);
     }
@@ -60,6 +59,13 @@ public class MainActivity extends AppCompatActivity implements AdapterCavalo.OnI
         cavaloList.clear();
         cavaloList.addAll(dbHelper.getAllCavalos());
         ca.notifyDataSetChanged();
+    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        dbCavalo.close();
+
     }
 
 

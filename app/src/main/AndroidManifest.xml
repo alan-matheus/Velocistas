@@ -13,6 +13,38 @@
         android:theme="@style/Theme.AppTreinadores"
         tools:targetApi="31">
         <activity
+            android:name=".ListarTempos"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ListarResultados"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ListarPagamentos"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ListarRacoes"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ListarRemedios"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.NoActionBar">
@@ -29,7 +61,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".RegistraPagamento"
+            android:name=".RegistrarPagamento"
             android:exported="false" />
         <activity
             android:name=".RegistrarServico"

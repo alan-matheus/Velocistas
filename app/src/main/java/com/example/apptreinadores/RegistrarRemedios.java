@@ -7,13 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.apptreinadores.databinding.ActivityRegistrarCavaloBinding;
 import com.example.apptreinadores.databinding.ActivityRegistrarRemediosBinding;
 
 public class RegistrarRemedios extends AppCompatActivity {
 
     ActivityRegistrarRemediosBinding binding;
-    private DBHelperRemedio dbHelperRemedio;
+    private DBHelperCavalo dbHelper;
     Cavalo cavalo;
 
     @Override
@@ -23,7 +22,8 @@ public class RegistrarRemedios extends AppCompatActivity {
         setContentView(binding.getRoot());
         cavalo = (Cavalo) getIntent().getSerializableExtra("cavalo");
 
-        dbHelperRemedio = new DBHelperRemedio(this, new DBHelperCavalo(this));
+        dbHelper = new DBHelperCavalo(this);
+
 
         binding.btnRegistraRemedio.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +63,7 @@ public class RegistrarRemedios extends AppCompatActivity {
         }
 
         Remedio remedio = new Remedio(null, nome, quantidade, valor, dataVencimento, dataChegada);
-        dbHelperRemedio.addRemedio(remedio, cavalo);
+        dbHelper.addRemedio(remedio, cavalo);
         Toast.makeText(this, "Remédio adicionado com sucesso!", Toast.LENGTH_LONG).show();
         limparCampos();
 
