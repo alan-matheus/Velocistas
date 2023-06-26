@@ -23,7 +23,7 @@
 
 
             <TextView
-                android:id="@+id/textViewRemedio"
+                android:id="@+id/textViewTempoTreino"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="2dp"
@@ -41,15 +41,15 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="10dp"
-                android:layout_toRightOf="@id/textViewRemedio"
+                android:layout_toRightOf="@id/textViewTempoTreino"
                 android:layout_marginTop="2dp"
                 android:orientation="vertical"
                 android:layout_marginLeft="4dp"
-                android:layout_toEndOf="@id/textViewRemedio">
+                android:layout_toEndOf="@id/textViewTempoTreino">
 
 
                 <TextView
-                    android:id="@+id/textViewValor"
+                    android:id="@+id/textViewDistanciaTempo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="3dp"
@@ -57,7 +57,7 @@
                     android:textColor="@color/black" />
 
                 <TextView
-                    android:id="@+id/textViewChegada"
+                    android:id="@+id/textViewDataTempo"
                     android:layout_width="113dp"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:textAppearanceSmall"

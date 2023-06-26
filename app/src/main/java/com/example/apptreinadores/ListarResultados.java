@@ -1,14 +1,18 @@
 package com.example.apptreinadores;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
-public class ListarResultados extends AppCompatActivity {
+import com.example.apptreinadores.databinding.ActivityListarRacoesBinding;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_listar_resultados);
-    }
+import java.util.ArrayList;
+import java.util.List;
+
+public class ListarResultados extends AppCompatActivity{
+
+
 }

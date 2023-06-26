@@ -52,7 +52,8 @@ public class Menu extends AppCompatActivity {
                 Intent i = new Intent(Menu.this, ListarRacoes.class);
                 i.putExtra("cavalo", cavalo);
                 i.putExtra("cavaloId", cavaloId);
-
+                startActivity(i);
+                finish();
             }
         });
 
@@ -62,6 +63,8 @@ public class Menu extends AppCompatActivity {
                 Intent i = new Intent(Menu.this, ListarPagamentos.class);
                 i.putExtra("cavalo", cavalo);
                 i.putExtra("cavaloId", cavaloId);
+                startActivity(i);
+                finish();
 
             }
         });
@@ -72,7 +75,8 @@ public class Menu extends AppCompatActivity {
                 Intent i = new Intent(Menu.this, ListarResultados.class);
                 i.putExtra("cavalo", cavalo);
                 i.putExtra("cavaloId", cavaloId);
-
+                startActivity(i);
+                finish();
             }
         });
 
@@ -82,7 +86,8 @@ public class Menu extends AppCompatActivity {
                 Intent i = new Intent(Menu.this, ListarTempos.class);
                 i.putExtra("cavalo", cavalo);
                 i.putExtra("cavaloId", cavaloId);
-
+                startActivity(i);
+                finish();
             }
         });
 

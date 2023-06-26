@@ -30,7 +30,10 @@ public class AdapterRacao extends RecyclerView.Adapter<AdapterRacao.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull AdapterRacao.ViewHolder holder, int position) {
-
+        Racao racao = racaoList.get(position);
+        holder.textViewRacao.setText(racao.getNome());
+        holder.textViewValor.setText(Double.toString(racao.getValor()));
+        holder.textViewChegada.setText(racao.getDataChegada());
     }
 
     @Override
@@ -45,7 +48,7 @@ public class AdapterRacao extends RecyclerView.Adapter<AdapterRacao.ViewHolder> 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            textViewRacao = itemView.findViewById(R.id.textViewRemedio);
+            textViewRacao = itemView.findViewById(R.id.textViewRaca);
             textViewValor = itemView.findViewById(R.id.textViewValor);
             textViewChegada = itemView.findViewById(R.id.textViewChegada);
             itemView.setOnClickListener(this);

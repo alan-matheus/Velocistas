@@ -265,6 +265,208 @@ public class DBHelperCavalo extends SQLiteOpenHelper {
         return remedioList;
     }
 
+    public void addRacao(Racao r, Cavalo c){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        values.put(COLUNA_NOME, r.getNome());
+        values.put(COLUNA_QUANTIDADE_RACAO, r.getQuantidade());
+        values.put(COLUNA_CHEGADA_RACAO, r.getDataChegada());
+        values.put(COLUNA_VALOR_RACAO, r.getValor());
+        values.put(COLUNA_ID_CAVALO_RACAO, c.getId());
+
+        db.insert("remedio", null, values);
+        db.close();
+
+    }
+
+    @SuppressLint("Range")
+    public List<Racao> getRacoesByCavaloId(Integer cavaloId) {
+        Log.d("DBHelperRacao", "getRacoesByCavaloId called with cavaloId: " + cavaloId);
+
+        List<Racao> racaoList = new ArrayList<>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "SELECT * FROM " + NOME_TABELA_RACAO +
+                " WHERE " + COLUNA_ID_CAVALO_REMEDIO + " = " + cavaloId;
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(cursor.getColumnIndex(COLUNA_ID));
+                String nome = cursor.getString(cursor.getColumnIndex(COLUNA_NOME_RACAO));
+                double quantidade = cursor.getDouble(cursor.getColumnIndex(COLUNA_QUANTIDADE_RACAO));
+                double valor = cursor.getDouble(cursor.getColumnIndex(COLUNA_VALOR_RACAO));
+                String dataChegada = cursor.getString(cursor.getColumnIndex(COLUNA_CHEGADA_RACAO));
+
+                Racao racao = new Racao(id, nome, quantidade, valor, dataChegada);
+                racaoList.add(racao);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return racaoList;
+    }
+
+    public void addPagamento(Pagamento p, Cavalo c){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        values.put(COLUNA_NOME_PAGAMENTO, p.getNome());
+        values.put(COLUNA_VALOR_PAGAMENTO, p.getValor());
+        values.put(COLUNA_DATA_PAGAMENTO, p.getData());
+        values.put(COLUNA_ID_CAVALO_RACAO, c.getId());
+
+        db.insert("pagamento", null, values);
+        db.close();
+
+    }
+
+    @SuppressLint("Range")
+    public List<Pagamento> getPagamentosByCavaloId(Integer cavaloId) {
+        Log.d("DBHelperPagamento", "getPagamentosByCavaloId called with cavaloId: " + cavaloId);
+
+        List<Pagamento> pagamentosList = new ArrayList<>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "SELECT * FROM " + NOME_TABELA_PAGAMENTO +
+                " WHERE " + COLUNA_ID_CAVALO_PAGAMENTO + " = " + cavaloId;
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(cursor.getColumnIndex(COLUNA_ID_PAGAMENTO));
+                String nome = cursor.getString(cursor.getColumnIndex(COLUNA_NOME_PAGAMENTO));
+                double valor = cursor.getDouble(cursor.getColumnIndex(COLUNA_VALOR_PAGAMENTO));
+                String dataPagamento = cursor.getString(cursor.getColumnIndex(COLUNA_DATA_PAGAMENTO));
+
+                Pagamento pagamento = new Pagamento(id, nome, valor, dataPagamento);
+                pagamentosList.add(pagamento);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return pagamentosList;
+    }
+
+    public void addResultado(Resultado r, Cavalo c){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        values.put(COLUNA_NOME_RESULTADO, r.getNome());
+        values.put(COLUNA_TERRENO_RESULTADO, r.getTerreno());
+        values.put(COLUNA_TEMPO_RESULTADO, r.getTempo());
+        values.put(COLUNA_DISTANCIA_RESULTADO, r.getDistancia());
+        values.put(COLUNA_DATA_RESULTADO, r.getData());
+        values.put(COLUNA_JOCKEY_RESULTADO, r.getJockey());
+        values.put(COLUNA_ID_CAVALO_RESULTADO, c.getId());
+
+        db.insert("resultado", null, values);
+        db.close();
+
+    }
+
+
+    @SuppressLint("Range")
+    public List<Resultado> getResultadosByCavaloId (Integer cavaloId) {
+        Log.d("DBHelperResultados", "getRemediosByCavaloId called with cavaloId: " + cavaloId);
+
+        List<Resultado> resultadosList = new ArrayList<>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "SELECT * FROM " + NOME_TABELA_RESULTADO +
+                " WHERE " + COLUNA_ID_CAVALO_RESULTADO + " = " + cavaloId;
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(cursor.getColumnIndex(COLUNA_ID_RESULTADO));
+                String nome = cursor.getString(cursor.getColumnIndex(COLUNA_NOME_RESULTADO));
+                String terreno = cursor.getString(cursor.getColumnIndex(COLUNA_TERRENO_RESULTADO));
+                double tempo = cursor.getDouble(cursor.getColumnIndex(COLUNA_TEMPO_RESULTADO));
+                int distancia = cursor.getInt(cursor.getColumnIndex(COLUNA_DISTANCIA_RESULTADO));
+                String dataResultado = cursor.getString(cursor.getColumnIndex(COLUNA_DATA_RESULTADO));
+                String jockeyResultado = cursor.getString(cursor.getColumnIndex(COLUNA_JOCKEY_RESULTADO));
+
+                Resultado resultado = new Resultado(id, nome, tempo, distancia, terreno, dataResultado, jockeyResultado);
+                resultadosList.add(resultado);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return resultadosList;
+    }
+
+    public void addTempoTreino(TempoTreino t, Cavalo c){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        values.put(COLUNA_TEMPO_TEMPO, t.getTempo());
+        values.put(COLUNA_DISTANCIA_TEMPO, t.getDistancia());
+        values.put(COLUNA_TERRENO_TEMPO, t.getTerreno());
+        values.put(COLUNA_DATA_TEMPO, t.getData());
+        values.put(COLUNA_JOCKEY_TEMPO, t.getJockey());
+        values.put(COLUNA_ID_CAVALO_TEMPO, c.getId());
+
+        db.insert("tempo_treino", null, values);
+        db.close();
+
+    }
+
+    @SuppressLint("Range")
+    public List<TempoTreino> getTemposByCavaloId (Integer cavaloId) {
+        Log.d("DBHelperTempos", "getTemposByCavaloId called with cavaloId: " + cavaloId);
+
+        List<TempoTreino> temposList = new ArrayList<>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "SELECT * FROM " + NOME_TABELA_TEMPO +
+                " WHERE " + COLUNA_ID_CAVALO_TEMPO + " = " + cavaloId;
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(cursor.getColumnIndex(COLUNA_ID_TEMPO));
+                String terreno = cursor.getString(cursor.getColumnIndex(COLUNA_TERRENO_TEMPO));
+                double tempo = cursor.getDouble(cursor.getColumnIndex(COLUNA_TEMPO_TEMPO));
+                int distancia = cursor.getInt(cursor.getColumnIndex(COLUNA_DISTANCIA_TEMPO));
+                String dataTempo = cursor.getString(cursor.getColumnIndex(COLUNA_DATA_TEMPO));
+                String jockeyTempo = cursor.getString(cursor.getColumnIndex(COLUNA_JOCKEY_TEMPO));
+
+                TempoTreino tempoTreino = new TempoTreino(id, tempo, distancia, terreno, dataTempo, jockeyTempo);
+                temposList.add(tempoTreino);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return temposList;
+    }
+
+
 
 
 }
