@@ -59,6 +59,7 @@ public class RegistrarRacoes extends AppCompatActivity {
         }
         else if(!dataChegada.matches(regex)){
             binding.inputChegadaRacao.setError("Informe a data: dd/mm/aaaa");
+            return;
         }
         else if(valor == 0.0){
             binding.inputValorRacao.setError("Informe o valor do remédio.");
