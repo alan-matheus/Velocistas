@@ -4,6 +4,7 @@ public class Racao {
     private Integer id;
     private String nome;
     private double quantidade;
+    //private double qtdAtual;
     private double valor;
     private String dataChegada;
 
@@ -13,7 +14,9 @@ public class Racao {
         this.quantidade = quantidade;
         this.valor = valor;
         this.dataChegada = dataChegada;
+
     }
+
 
     public Integer getId() {
         return id;
@@ -38,6 +41,14 @@ public class Racao {
     public void setQuantidade(double quantidade) {
         this.quantidade = quantidade;
     }
+/*
+    public double getQtdAtual() {
+        return qtdAtual;
+    }
+
+    public void setQtdAtual(double qtdAtual) {
+        this.qtdAtual = qtdAtual;
+    }*/
 
     public double getValor() {
         return valor;

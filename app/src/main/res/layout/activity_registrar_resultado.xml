@@ -69,7 +69,7 @@
         app:layout_constraintVertical_bias="0.097" />
 
     <EditText
-        android:id="@+id/inputTipoPagamento"
+        android:id="@+id/inputResultado"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -105,9 +105,9 @@
         android:paddingBottom="10dp"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/inputTipoPagamento"
-        app:layout_constraintStart_toStartOf="@+id/inputTipoPagamento"
-        app:layout_constraintTop_toBottomOf="@+id/inputTipoPagamento" />
+        app:layout_constraintEnd_toEndOf="@+id/inputResultado"
+        app:layout_constraintStart_toStartOf="@+id/inputResultado"
+        app:layout_constraintTop_toBottomOf="@+id/inputResultado" />
 
     <EditText
         android:id="@+id/inputTempo"
@@ -186,7 +186,7 @@
         app:layout_constraintTop_toBottomOf="@+id/inputJockey" />
 
     <Button
-        android:id="@+id/btnSalvaResultado"
+        android:id="@+id/btnRegistraResultado"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="32dp"

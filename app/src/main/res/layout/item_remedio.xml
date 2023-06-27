@@ -15,9 +15,10 @@
         android:orientation="vertical"
         android:background="@color/white"
         >
+
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="126dp"
             android:orientation="horizontal"
             android:padding="6dp">
 
@@ -26,10 +27,10 @@
                 android:id="@+id/textViewRemedio"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
+                android:layout_centerVertical="true"
                 android:layout_marginStart="4dp"
                 android:layout_marginRight="10dp"
-                android:layout_centerVertical="true"
+                android:layout_marginBottom="2dp"
                 android:textAppearance="?android:textAppearanceMedium"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
@@ -41,11 +42,11 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="10dp"
-                android:layout_toRightOf="@id/textViewRemedio"
-                android:layout_marginTop="2dp"
-                android:orientation="vertical"
                 android:layout_marginLeft="4dp"
-                android:layout_toEndOf="@id/textViewRemedio">
+                android:layout_marginTop="2dp"
+                android:layout_toEndOf="@id/textViewRemedio"
+                android:layout_toRightOf="@id/textViewRemedio"
+                android:orientation="vertical">
 
 
                 <TextView
@@ -58,6 +59,29 @@
 
                 <TextView
                     android:id="@+id/textViewChegada"
+                    android:layout_width="113dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textViewVencimento"
+                    android:layout_width="113dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textViewQtdRemedio"
+                    android:layout_width="113dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:textColor="@color/black" />
+                <TextView
+                    android:id="@+id/textViewQtdAtualRemedio"
                     android:layout_width="113dp"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:textAppearanceSmall"

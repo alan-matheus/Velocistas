@@ -50,6 +50,7 @@ public class RegistrarRemedios extends AppCompatActivity {
         double valor = getValorFromInput();
         String dataVencimento = binding.inputVencimentoRemedio.getText().toString();
         String dataChegada = binding.inputChegadaRemedio.getText().toString();
+        String regex = "\\d{2}/\\d{2}/\\d{4}";
 
         if(quantidade == 0.0) {
             binding.inputQuantidadeRemedio.setError("Informe a quantidade.");
@@ -57,7 +58,15 @@ public class RegistrarRemedios extends AppCompatActivity {
         } else if(valor == 0.0){
             binding.inputValorRemedio.setError("Informe o valor do remédio.");
             return;
-        } else if(nome.isEmpty() || dataVencimento.isEmpty() || dataChegada.isEmpty()){
+        } else if (!dataChegada.matches(regex)){
+            binding.inputChegadaRemedio.setError("Informe a data: dd/mm/aaaa");
+            return;
+        } else if(!dataVencimento.matches(regex)){
+            binding.inputVencimentoRemedio.setError("Informe a data: dd/mm/aaaa");
+            return;
+        }
+
+        else if(nome.isEmpty() || dataVencimento.isEmpty() || dataChegada.isEmpty()){
             Toast.makeText(this, "Preencha todos os campos, por favor.", Toast.LENGTH_SHORT).show();
             return;
         }

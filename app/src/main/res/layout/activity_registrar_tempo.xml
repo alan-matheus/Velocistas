@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegistrarServico"
+    tools:context=".RegistrarTempoTreino"
     android:background="@color/white">
 
     <TextView
@@ -56,7 +56,7 @@
         android:id="@+id/rgcav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Registrar Serviço"
+        android:text="Registrar Tempo Treino"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -77,7 +77,7 @@
         app:layout_constraintTop_toBottomOf="@+id/rgcav" />
 
     <EditText
-        android:id="@+id/inputTipoServico"
+        android:id="@+id/inputTempoTreino"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -85,7 +85,7 @@
         android:layout_marginEnd="32dp"
         android:background="@drawable/input_bg"
         android:ems="10"
-        android:hint="Nome"
+        android:hint="Tempo (segundos)"
         android:inputType="textPersonName"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
@@ -98,13 +98,13 @@
         app:layout_constraintTop_toBottomOf="@+id/rgcav" />
 
     <EditText
-        android:id="@+id/inputValorServico"
+        android:id="@+id/inputDistanciaTempo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/input_bg"
         android:ems="10"
-        android:hint="Custo"
+        android:hint="Distância"
         android:inputType="numberDecimal"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
@@ -112,18 +112,18 @@
         android:paddingBottom="10dp"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/inputTipoServico"
-        app:layout_constraintStart_toStartOf="@+id/inputTipoServico"
-        app:layout_constraintTop_toBottomOf="@+id/inputTipoServico" />
+        app:layout_constraintEnd_toEndOf="@+id/inputTempoTreino"
+        app:layout_constraintStart_toStartOf="@+id/inputTempoTreino"
+        app:layout_constraintTop_toBottomOf="@+id/inputTempoTreino" />
 
     <EditText
-        android:id="@+id/inputDataServico"
+        android:id="@+id/inputDataTempo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/input_bg"
         android:ems="10"
-        android:hint="Data do Serviço"
+        android:hint="Data"
         android:inputType="date"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
@@ -131,12 +131,12 @@
         android:paddingBottom="10dp"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/inputValorServico"
-        app:layout_constraintStart_toStartOf="@+id/inputValorServico"
-        app:layout_constraintTop_toBottomOf="@+id/inputValorServico" />
+        app:layout_constraintEnd_toEndOf="@+id/inputDistanciaTempo"
+        app:layout_constraintStart_toStartOf="@+id/inputDistanciaTempo"
+        app:layout_constraintTop_toBottomOf="@+id/inputDistanciaTempo" />
 
     <Button
-        android:id="@+id/btnRegistraServico"
+        android:id="@+id/btnRegistraTempoTreino"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="75dp"
@@ -146,10 +146,47 @@
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/inputDataServico"
-        app:layout_constraintHorizontal_bias="0.971"
-        app:layout_constraintStart_toStartOf="@+id/inputDataServico"
-        app:layout_constraintTop_toBottomOf="@+id/inputDataServico"
-        app:layout_constraintVertical_bias="0.297" />
+        app:layout_constraintEnd_toEndOf="@+id/inputDataTempo"
+        app:layout_constraintHorizontal_bias="0.987"
+        app:layout_constraintStart_toStartOf="@+id/inputDataTempo"
+        app:layout_constraintTop_toBottomOf="@+id/inputDataTempo"
+        app:layout_constraintVertical_bias="0.475" />
+
+    <EditText
+        android:id="@+id/inputTerrenoTempo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/input_bg"
+        android:ems="10"
+        android:hint="Terreno"
+        android:inputType="textPersonName"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/inputDataTempo"
+        app:layout_constraintStart_toStartOf="@+id/inputDataTempo"
+        app:layout_constraintTop_toBottomOf="@+id/inputDataTempo" />
+
+    <EditText
+        android:id="@+id/inputJockeyTempo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/input_bg"
+        android:ems="10"
+        android:hint="Jockey"
+        android:inputType="textPersonName"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/inputTerrenoTempo"
+        app:layout_constraintStart_toStartOf="@+id/inputTerrenoTempo"
+        app:layout_constraintTop_toBottomOf="@+id/inputTerrenoTempo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

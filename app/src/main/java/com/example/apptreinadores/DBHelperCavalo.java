@@ -43,6 +43,7 @@ public class DBHelperCavalo extends SQLiteOpenHelper {
     private static final String COLUNA_ID_RACAO = "id";
     private static final String COLUNA_NOME_RACAO = "nome";
     private static final String COLUNA_QUANTIDADE_RACAO = "quantidade";
+    private static final String COLUNA_QUANTIDADE_ATUAL_RACAO = "qtd_atual";
     private static final String COLUNA_VALOR_RACAO = "valor";
     private static final String COLUNA_CHEGADA_RACAO = "data_chegada";
     private static final String COLUNA_ID_CAVALO_RACAO = "id_cavalo";
@@ -113,6 +114,7 @@ public class DBHelperCavalo extends SQLiteOpenHelper {
                 COLUNA_ID_RACAO + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUNA_NOME_RACAO + " TEXT, " +
                 COLUNA_QUANTIDADE_RACAO + " REAL, " +
+                COLUNA_QUANTIDADE_ATUAL_RACAO + " REAL, " +
                 COLUNA_VALOR_RACAO+ " REAL, " +
                 COLUNA_CHEGADA_RACAO+ " TEXT, " +
                 COLUNA_ID_CAVALO_RACAO + " INTEGER, " +
@@ -300,6 +302,7 @@ public class DBHelperCavalo extends SQLiteOpenHelper {
                 int id = cursor.getInt(cursor.getColumnIndex(COLUNA_ID));
                 String nome = cursor.getString(cursor.getColumnIndex(COLUNA_NOME_RACAO));
                 double quantidade = cursor.getDouble(cursor.getColumnIndex(COLUNA_QUANTIDADE_RACAO));
+                //double qtdAtual = cursor.getDouble(cursor.getColumnIndex(COLUNA_QUANTIDADE_ATUAL_RACAO));
                 double valor = cursor.getDouble(cursor.getColumnIndex(COLUNA_VALOR_RACAO));
                 String dataChegada = cursor.getString(cursor.getColumnIndex(COLUNA_CHEGADA_RACAO));
 

@@ -72,9 +72,13 @@ public class RegistrarCavalo extends AppCompatActivity {
         String nome = binding.inputNomeCavalo.getText().toString();
         String raca = binding.inputRaca.getText().toString();
         String chegada = binding.inputChegada.getText().toString();
+        String regex = "\\d{2}/\\d{2}/\\d{4}";
 
-        if(nome.isEmpty() || raca.isEmpty() || chegada.isEmpty()){
+        if(nome.isEmpty() || raca.isEmpty()){
             Toast.makeText(this, "Preencha todos os campos, por favor.", Toast.LENGTH_SHORT).show();
+            return;
+        } else if(!chegada.matches(regex)){
+            binding.inputChegada.setError("Informe a data: dd/mm/aaaa");
             return;
         }
 

@@ -37,7 +37,7 @@ public class RegistrarPagamento extends AppCompatActivity {
         binding.btnVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(RegistrarRemedios.this, ListarRemedios.class);
+                Intent intent = new Intent(RegistrarPagamento.this, ListarPagamentos.class);
                 intent.putExtra("cavalo", cavalo);
                 startActivity(intent);
                 finish();
@@ -47,51 +47,32 @@ public class RegistrarPagamento extends AppCompatActivity {
     }
 
     private void adicionarPagamento(){
-        String nome = binding.inputNomeRemedio.getText().toString();
-        double quantidade = getQuantidadeFromInput();
+        String nome = binding.inputTipoPagamento.getText().toString();
         double valor = getValorFromInput();
-        String dataVencimento = binding.inputVencimentoRemedio.getText().toString();
-        String dataChegada = binding.inputChegadaRemedio.getText().toString();
+        String dataPagamento = binding.inputDataPagamento.getText().toString();
 
-        if(quantidade == 0.0) {
-            binding.inputQuantidadeRemedio.setError("Informe a quantidade.");
+        if(valor == 0.0){
+            binding.inputValorPagamento.setError("Informe o valor do remédio.");
             return;
-        } else if(valor == 0.0){
-            binding.inputValorRemedio.setError("Informe o valor do remédio.");
-            return;
-        } else if(nome.isEmpty() || dataVencimento.isEmpty() || dataChegada.isEmpty()){
+        } else if(nome.isEmpty() || dataPagamento.isEmpty()){
             Toast.makeText(this, "Preencha todos os campos, por favor.", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        Remedio remedio = new Remedio(null, nome, quantidade, valor, dataVencimento, dataChegada);
-        dbHelper.addRemedio(remedio, cavalo);
+        Pagamento pagamento = new Pagamento(null, nome, valor, dataPagamento);
+        dbHelper.addPagamento(pagamento, cavalo);
         Toast.makeText(this, "Remédio adicionado com sucesso!", Toast.LENGTH_LONG).show();
         limparCampos();
 
-
-    }
-
-    private double getQuantidadeFromInput() {
-        String quantidadeText = binding.inputQuantidadeRemedio.getText().toString().trim();
-        if (quantidadeText.isEmpty()) {
-            return 0.0; // Valor padrão quando o campo está vazio
-        } else {
-            try {
-                return Double.parseDouble(quantidadeText);
-            } catch (NumberFormatException e) {
-                return 0.0; // Valor padrão quando o valor não pode ser convertido corretamente
-            }
-        }
     }
 
     private double getValorFromInput() {
-        String quantidadeText = binding.inputValorRemedio.getText().toString().trim();
-        if (quantidadeText.isEmpty()) {
+        String valorText = binding.inputValorPagamento.getText().toString().trim();
+        if (valorText.isEmpty()) {
             return 0.0; // Valor padrão quando o campo está vazio
         } else {
             try {
-                return Double.parseDouble(quantidadeText);
+                return Double.parseDouble(valorText);
             } catch (NumberFormatException e) {
                 return 0.0; // Valor padrão quando o valor não pode ser convertido corretamente
             }
@@ -99,11 +80,10 @@ public class RegistrarPagamento extends AppCompatActivity {
     }
 
     private void limparCampos(){
-        binding.inputNomeRemedio.setText("");
-        binding.inputValorRemedio.setText("");
-        binding.inputQuantidadeRemedio.setText("");
-        binding.inputVencimentoRemedio.setText("");
-        binding.inputChegadaRemedio.setText("");
+        binding.inputTipoPagamento.setText("");
+        binding.inputValorPagamento.setText("");
+        binding.inputDataPagamento.setText("");
+
     }
 
 }

@@ -34,6 +34,8 @@ public class AdapterTempo extends RecyclerView.Adapter<AdapterTempo.ViewHolder> 
         holder.textViewTempoTreino.setText(Double.toString(tempoTreino.getTempo()));
         holder.textViewDistanciaTempo.setText(Integer.toString(tempoTreino.getDistancia()));
         holder.textViewDataTempo.setText(tempoTreino.getData());
+        holder.textViewTerrenoTempo.setText(tempoTreino.getTerreno());
+        holder.textViewJockeyTempo.setText(tempoTreino.getJockey());
     }
 
     @Override
@@ -45,12 +47,17 @@ public class AdapterTempo extends RecyclerView.Adapter<AdapterTempo.ViewHolder> 
         private TextView textViewTempoTreino;
         private TextView textViewDistanciaTempo;
         private TextView textViewDataTempo;
+        private TextView textViewJockeyTempo;
+        private TextView textViewTerrenoTempo;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textViewTempoTreino = itemView.findViewById(R.id.textViewTempoTreino);
             textViewDistanciaTempo= itemView.findViewById(R.id.textViewDistanciaTempo);
             textViewDataTempo = itemView.findViewById(R.id.textViewDataTempo);
+            textViewJockeyTempo = itemView.findViewById(R.id.textViewJockeyTempo);
+            textViewTerrenoTempo = itemView.findViewById(R.id.textViewTerrenoTempo);
             itemView.setOnClickListener(this);
         }
 

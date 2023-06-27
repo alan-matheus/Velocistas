@@ -36,6 +36,9 @@ public class AdapterResultado extends RecyclerView.Adapter<AdapterResultado.View
         holder.textViewResultado.setText(resultado.getNome());
         holder.textViewTempo.setText(Double.toString(resultado.getTempo()));
         holder.textViewData.setText(resultado.getData());
+        holder.textViewTerrenoResultado.setText(resultado.getTerreno());
+        holder.textViewJockeyResultado.setText(resultado.getJockey());
+        holder.textViewDistanciaResultado.setText(Integer.toString(resultado.getDistancia()));
     }
 
     @Override
@@ -47,12 +50,19 @@ public class AdapterResultado extends RecyclerView.Adapter<AdapterResultado.View
         private TextView textViewResultado;
         private TextView textViewTempo;
         private TextView textViewData;
+        private TextView textViewTerrenoResultado;
+        private TextView textViewJockeyResultado;
+        private TextView textViewDistanciaResultado;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textViewResultado = itemView.findViewById(R.id.textViewResultado);
             textViewTempo= itemView.findViewById(R.id.textViewTempo);
             textViewData = itemView.findViewById(R.id.textViewData);
+            textViewTerrenoResultado = itemView.findViewById(R.id.textViewTerrenoResultado);
+            textViewJockeyResultado = itemView.findViewById(R.id.textViewJockeyResultado);
+            textViewDistanciaResultado = itemView.findViewById(R.id.textViewDistanciaResultado);
             itemView.setOnClickListener(this);
         }
 

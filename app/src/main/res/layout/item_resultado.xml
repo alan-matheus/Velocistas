@@ -18,7 +18,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="130dp"
             android:orientation="horizontal"
             android:padding="6dp">
 
@@ -38,7 +38,7 @@
 
             <LinearLayout
                 android:id="@+id/linearLayout"
-                android:layout_width="wrap_content"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="10dp"
@@ -59,8 +59,33 @@
 
                 <TextView
                     android:id="@+id/textViewData"
-                    android:layout_width="113dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textViewTerrenoResultado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textViewJockeyResultado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textViewDistanciaResultado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
                     android:textAppearance="?android:textAppearanceSmall"
                     android:textColor="@color/black" />
             </LinearLayout>

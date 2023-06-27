@@ -172,7 +172,7 @@
         android:background="@drawable/input_bg"
         android:ems="10"
         android:hint="Data de Vencimento"
-        android:inputType="textPersonName"
+        android:inputType="date"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingRight="10dp"

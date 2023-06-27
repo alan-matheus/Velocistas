@@ -7,36 +7,36 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-
 import com.example.apptreinadores.databinding.ActivityRegistrarResultadoBinding;
+import com.example.apptreinadores.databinding.ActivityRegistrarTempoBinding;
 
-public class RegistrarResultado extends AppCompatActivity {
+public class RegistrarTempoTreino extends AppCompatActivity {
 
-    ActivityRegistrarResultadoBinding binding;
+    ActivityRegistrarTempoBinding binding;
     private DBHelperCavalo dbHelper;
     Cavalo cavalo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityRegistrarResultadoBinding.inflate(getLayoutInflater());
+        binding = ActivityRegistrarTempoBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         cavalo = (Cavalo) getIntent().getSerializableExtra("cavalo");
 
         dbHelper = new DBHelperCavalo(this);
 
 
-        binding.btnRegistraResultado.setOnClickListener(new View.OnClickListener() {
+        binding.btnRegistraTempoTreino.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                adicionarResultado();
+                adicionarTempo();
             }
         });
 
         binding.btnVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(RegistrarResultado.this, ListarResultados.class);
+                Intent intent = new Intent(RegistrarTempoTreino.this, ListarTempos.class);
                 intent.putExtra("cavalo", cavalo);
                 startActivity(intent);
                 finish();
@@ -45,27 +45,27 @@ public class RegistrarResultado extends AppCompatActivity {
 
     }
 
-    private void adicionarResultado(){
-        String nomeResultado = binding.inputResultado.getText().toString();
+    private void adicionarTempo(){
+
         int distancia = (int) getDistanciaFromInput();
         double tempo = getTempoFromInput();
-        String jockey = binding.inputJockey.getText().toString();
-        String terreno = binding.inputTerreno.getText().toString();
-        String dataResultado = binding.inputData.getText().toString();
+        String jockey = binding.inputJockeyTempo.getText().toString();
+        String terreno = binding.inputTerrenoTempo.getText().toString();
+        String dataResultado = binding.inputDataTempo.getText().toString();
 
         if(distancia == 0) {
-            binding.inputDistancia.setError("Informe a distancia.");
+            binding.inputDistanciaTempo.setError("Informe a distancia.");
             return;
         } else if(tempo == 0.0){
-            binding.inputTempo.setError("Informe o tempo.");
+            binding.inputTempoTreino.setError("Informe o tempo.");
             return;
-        } else if(nomeResultado.isEmpty() || dataResultado.isEmpty() || jockey.isEmpty() || terreno.isEmpty()){
+        } else if(dataResultado.isEmpty() || jockey.isEmpty() || terreno.isEmpty()){
             Toast.makeText(this, "Preencha todos os campos, por favor.", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        Resultado resultado = new Resultado(null, nomeResultado, tempo, distancia, terreno, dataResultado, jockey);
-        dbHelper.addResultado(resultado, cavalo);
+        TempoTreino tempoTreino = new TempoTreino(null, tempo, distancia, terreno, dataResultado, jockey);
+        dbHelper.addTempoTreino(tempoTreino, cavalo);
         Toast.makeText(this, "Ração adicionado com sucesso!", Toast.LENGTH_LONG).show();
         limparCampos();
 
@@ -73,7 +73,7 @@ public class RegistrarResultado extends AppCompatActivity {
     }
 
     private double getDistanciaFromInput() {
-        String distanciaText = binding.inputDistancia.getText().toString().trim();
+        String distanciaText = binding.inputDistanciaTempo.getText().toString().trim();
         if (distanciaText.isEmpty()) {
             return 0; // Valor padrão quando o campo está vazio
         } else {
@@ -86,7 +86,7 @@ public class RegistrarResultado extends AppCompatActivity {
     }
 
     private double getTempoFromInput() {
-        String tempoText = binding.inputTempo.getText().toString().trim();
+        String tempoText = binding.inputTempoTreino.getText().toString().trim();
         if (tempoText.isEmpty()) {
             return 0.0; // Valor padrão quando o campo está vazio
         } else {
@@ -99,11 +99,10 @@ public class RegistrarResultado extends AppCompatActivity {
     }
 
     private void limparCampos(){
-        binding.inputResultado.setText("");
-        binding.inputDistancia.setText("");
-        binding.inputData.setText("");
-        binding.inputTempo.setText("");
-        binding.inputTerreno.setText("");
-        binding.inputJockey.setText("");
+        binding.inputDistanciaTempo.setText("");
+        binding.inputDataTempo.setText("");
+        binding.inputTempoTreino.setText("");
+        binding.inputTerrenoTempo.setText("");
+        binding.inputJockeyTempo.setText("");
     }
 }

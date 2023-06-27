@@ -62,6 +62,21 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:textAppearanceSmall"
                     android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/textViewQuantidade"
+                    android:layout_width="113dp"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:textColor="@color/black" />
+                <TextView
+                    android:id="@+id/textViewQtdAtual"
+                    android:layout_width="113dp"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:textColor="@color/black" />
+
+
             </LinearLayout>
 
 

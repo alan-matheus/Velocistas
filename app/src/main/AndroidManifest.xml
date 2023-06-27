@@ -64,7 +64,7 @@
             android:name=".RegistrarPagamento"
             android:exported="false" />
         <activity
-            android:name=".RegistrarServico"
+            android:name=".RegistrarTempoTreino"
             android:exported="false" />
         <activity
             android:name=".RegistrarResultado"

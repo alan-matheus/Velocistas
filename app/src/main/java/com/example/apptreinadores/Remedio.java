@@ -7,6 +7,7 @@ public class Remedio implements Serializable {
     private Integer id;
     private String nome;
     private double quantidade;
+    //private double qtdAtual;
     private double valor;
     private String dataVencimento;
     private String dataChegada;
@@ -20,6 +21,7 @@ public class Remedio implements Serializable {
         this.valor = valor;
         this.dataVencimento = dataVencimento;
         this.dataChegada = dataChegada;
+
 
     }
 
@@ -47,6 +49,15 @@ public class Remedio implements Serializable {
         this.quantidade = quantidade;
     }
 
+    /*
+    public double getQtdAtual() {
+        return qtdAtual;
+    }
+
+    public void setQtdAtual(double qtdAtual) {
+        this.qtdAtual = qtdAtual;
+    }
+*/
     public double getValor() {
         return valor;
     }
