@@ -15,7 +15,6 @@ public class AdapterPagamento extends RecyclerView.Adapter<AdapterPagamento.View
     private List<Pagamento> pagamentosList;
     private OnItemClickListener listener;
 
-
     public AdapterPagamento(List<Pagamento> pagamentosList, OnItemClickListener listener){
         this.pagamentosList = pagamentosList;
         this.listener = listener;
@@ -35,7 +34,6 @@ public class AdapterPagamento extends RecyclerView.Adapter<AdapterPagamento.View
         holder.textViewValor.setText(Double.toString(pagamento.getValor()));
         holder.textViewData.setText(pagamento.getData());
     }
-
     @Override
     public int getItemCount() {
         return pagamentosList.size();
@@ -63,7 +61,6 @@ public class AdapterPagamento extends RecyclerView.Adapter<AdapterPagamento.View
             }
         }
     }
-
     public interface OnItemClickListener{
         void onItemClick(Pagamento pagamento);
     }

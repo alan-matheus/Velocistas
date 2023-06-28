@@ -45,7 +45,6 @@ public class RegistrarPagamento extends AppCompatActivity {
         });
 
     }
-
     private void adicionarPagamento(){
         String nome = binding.inputTipoPagamento.getText().toString();
         double valor = getValorFromInput();

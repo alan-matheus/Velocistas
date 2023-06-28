@@ -11,16 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class AdapterRacao extends RecyclerView.Adapter<AdapterRacao.ViewHolder> {
-
     private List<Racao> racaoList;
     private OnItemClickListener listener;
-
-
     public AdapterRacao(List<Racao> racaoList, OnItemClickListener listener){
         this.racaoList = racaoList;
         this.listener = listener;
     }
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
