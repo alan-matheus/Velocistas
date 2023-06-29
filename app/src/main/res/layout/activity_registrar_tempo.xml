@@ -153,25 +153,6 @@
         app:layout_constraintVertical_bias="0.475" />
 
     <EditText
-        android:id="@+id/inputTerrenoTempo"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/input_bg"
-        android:ems="10"
-        android:hint="Terreno"
-        android:inputType="textPersonName"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/inputDataTempo"
-        app:layout_constraintStart_toStartOf="@+id/inputDataTempo"
-        app:layout_constraintTop_toBottomOf="@+id/inputDataTempo" />
-
-    <EditText
         android:id="@+id/inputJockeyTempo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -185,8 +166,24 @@
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
         android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/inputTerrenoTempo"
-        app:layout_constraintStart_toStartOf="@+id/inputTerrenoTempo"
-        app:layout_constraintTop_toBottomOf="@+id/inputTerrenoTempo" />
+        app:layout_constraintEnd_toEndOf="@+id/spinnerTerrenoTreino"
+        app:layout_constraintStart_toStartOf="@+id/spinnerTerrenoTreino"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerTerrenoTreino" />
+
+    <Spinner
+        android:id="@+id/spinnerTerrenoTreino"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/spinnerstyle"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputDataTempo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

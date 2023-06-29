@@ -69,47 +69,6 @@
         app:layout_constraintVertical_bias="0.097" />
 
     <EditText
-        android:id="@+id/inputResultado"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/input_bg"
-        android:ems="10"
-        android:hint="Resultado"
-        android:inputType="text"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="#000000"
-        android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/rges" />
-
-    <EditText
-        android:id="@+id/inputTerreno"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/input_bg"
-        android:ems="10"
-        android:hint="Terreno"
-        android:inputType="textPersonName"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/inputResultado"
-        app:layout_constraintStart_toStartOf="@+id/inputResultado"
-        app:layout_constraintTop_toBottomOf="@+id/inputResultado" />
-
-    <EditText
         android:id="@+id/inputTempo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -124,9 +83,9 @@
         android:paddingBottom="10dp"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/inputTerreno"
-        app:layout_constraintStart_toStartOf="@+id/inputTerreno"
-        app:layout_constraintTop_toBottomOf="@+id/inputTerreno" />
+        app:layout_constraintEnd_toEndOf="@+id/spinnerTerreno"
+        app:layout_constraintStart_toStartOf="@+id/spinnerTerreno"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerTerreno" />
 
     <EditText
         android:id="@+id/inputData"
@@ -200,6 +159,34 @@
         app:layout_constraintStart_toStartOf="@+id/inputDistancia"
         app:layout_constraintTop_toBottomOf="@+id/inputDistancia"
         app:layout_constraintVertical_bias="0.0" />
+
+    <Spinner
+        android:id="@+id/spinnerResultado"
+        android:layout_width="314dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="31dp"
+        android:background="@drawable/spinnerstyle"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rges" />
+
+    <Spinner
+        android:id="@+id/spinnerTerreno"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/spinnerstyle"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerResultado"
+        app:layout_constraintStart_toStartOf="@+id/spinnerResultado"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerResultado" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

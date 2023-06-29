@@ -30,9 +30,9 @@ public class AdapterPagamento extends RecyclerView.Adapter<AdapterPagamento.View
     @Override
     public void onBindViewHolder(@NonNull AdapterPagamento.ViewHolder holder, int position) {
         Pagamento pagamento = pagamentosList.get(position);
-        holder.textViewPagamento.setText(pagamento.getNome());
-        holder.textViewValor.setText(Double.toString(pagamento.getValor()));
-        holder.textViewData.setText(pagamento.getData());
+        holder.textViewPagamento.setText("Pagamento: "+pagamento.getNome());
+        holder.textViewValor.setText("Valor: UY$ "+Double.toString(pagamento.getValor()));
+        holder.textViewData.setText("Data: "+pagamento.getData());
     }
     @Override
     public int getItemCount() {

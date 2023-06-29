@@ -16,7 +16,7 @@ import java.util.List;
 public class ListarPagamentos extends AppCompatActivity implements AdapterPagamento.OnItemClickListener {
 
     ActivityListarPagamentosBinding binding;
-    Cavalo cavalo;
+    private Cavalo cavalo;
     private Integer cavaloId;
     private AdapterPagamento adapterPagamento;
     private List<Pagamento> pagamentosList;
@@ -59,6 +59,7 @@ public class ListarPagamentos extends AppCompatActivity implements AdapterPagame
             public void onClick(View view) {
                 Intent intent = new Intent(ListarPagamentos.this, RegistrarPagamento.class);
                 intent.putExtra("cavalo", cavalo);
+                intent.putExtra("cavaloId", cavaloId);
                 startActivity(intent);
                 finish();
             }

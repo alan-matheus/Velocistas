@@ -27,10 +27,10 @@ public class AdapterRacao extends RecyclerView.Adapter<AdapterRacao.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull AdapterRacao.ViewHolder holder, int position) {
         Racao racao = racaoList.get(position);
-        holder.textViewRacao.setText(racao.getNome());
-        holder.textViewValor.setText(Double.toString(racao.getValor()));
-        holder.textViewChegada.setText(racao.getDataChegada());
-        holder.textViewQuantidade.setText(Double.toString(racao.getQuantidade()));
+        holder.textViewRacao.setText("Nome: "+racao.getNome());
+        holder.textViewValor.setText("Valor: UY$ "+Double.toString(racao.getValor()));
+        holder.textViewChegada.setText("Chegou: "+racao.getDataChegada());
+        holder.textViewQuantidade.setText("Quantidade: "+Double.toString(racao.getQuantidade())+" kg");
         //holder.textViewQtdAtual.setText(Double.toString(racao.getQtdAtual()));
     }
 

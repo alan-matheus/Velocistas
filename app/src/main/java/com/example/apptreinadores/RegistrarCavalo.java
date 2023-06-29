@@ -3,13 +3,21 @@ package com.example.apptreinadores;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.apptreinadores.databinding.ActivityRegistrarCavaloBinding;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RegistrarCavalo extends AppCompatActivity {
 
@@ -50,6 +58,26 @@ public class RegistrarCavalo extends AppCompatActivity {
         dbHelper = new DBHelperCavalo(this);
         binding.inputNomeCavalo.addTextChangedListener(capitalizeTextWatcher);
 
+        Spinner spinner = binding.spinner;
+
+        ArrayAdapter<String> racaAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, getOpcoesRaca());
+        racaAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinner.setAdapter(racaAdapter);
+
+        spinner.setSelection(0);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                ((TextView) view).setTextColor(Color.BLACK);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
+
 
         binding.btnVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,13 +96,25 @@ public class RegistrarCavalo extends AppCompatActivity {
         });
     }
 
+    private List<String> getOpcoesRaca(){
+        List<String> opcoesRaca = new ArrayList<>();
+        opcoesRaca.add("Selecione a raça:");
+        opcoesRaca.add("Puro Sangue Inglês");
+        opcoesRaca.add("Quardo de Milha");
+        opcoesRaca.add("Mestiço");
+
+        return opcoesRaca;
+    }
+
     private void salvarCavalo(){
+
+
         String nome = binding.inputNomeCavalo.getText().toString();
-        String raca = binding.inputRaca.getText().toString();
+        String raca = binding.spinner.getSelectedItem().toString();
         String chegada = binding.inputChegada.getText().toString();
         String regex = "\\d{2}/\\d{2}/\\d{4}";
 
-        if(nome.isEmpty() || raca.isEmpty()){
+        if(nome.isEmpty() || raca.isEmpty() || raca.equals("Selecione a raça:")){
             Toast.makeText(this, "Preencha todos os campos, por favor.", Toast.LENGTH_SHORT).show();
             return;
         } else if(!chegada.matches(regex)){
@@ -91,7 +131,6 @@ public class RegistrarCavalo extends AppCompatActivity {
 
     private void limparCampos(){
         binding.inputNomeCavalo.setText("");
-        binding.inputRaca.setText("");
         binding.inputChegada.setText("");
     }
 }

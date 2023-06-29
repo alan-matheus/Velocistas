@@ -31,11 +31,11 @@ public class AdapterTempo extends RecyclerView.Adapter<AdapterTempo.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull AdapterTempo.ViewHolder holder, int position) {
         TempoTreino tempoTreino = temposList.get(position);
-        holder.textViewTempoTreino.setText(Double.toString(tempoTreino.getTempo()));
-        holder.textViewDistanciaTempo.setText(Integer.toString(tempoTreino.getDistancia()));
-        holder.textViewDataTempo.setText(tempoTreino.getData());
-        holder.textViewTerrenoTempo.setText(tempoTreino.getTerreno());
-        holder.textViewJockeyTempo.setText(tempoTreino.getJockey());
+        holder.textViewTempoTreino.setText("Tempo: "+Double.toString(tempoTreino.getTempo())+" s");
+        holder.textViewDistanciaTempo.setText("Distância: "+Integer.toString(tempoTreino.getDistancia())+" mts");
+        holder.textViewDataTempo.setText("Data: "+tempoTreino.getData());
+        holder.textViewTerrenoTempo.setText("Terreno: "+tempoTreino.getTerreno());
+        holder.textViewJockeyTempo.setText("Jockey: "+ tempoTreino.getJockey());
     }
 
     @Override

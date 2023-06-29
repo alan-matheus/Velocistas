@@ -32,11 +32,11 @@ public class AdapterRemedio extends RecyclerView.Adapter<AdapterRemedio.ViewHold
     @Override
     public void onBindViewHolder(@NonNull AdapterRemedio.ViewHolder holder, int position) {
         Remedio remedio = remedioList.get(position);
-        holder.textViewRemedio.setText(remedio.getNome());
-        holder.textViewValor.setText(Double.toString(remedio.getValor()));
-        holder.textViewChegada.setText(remedio.getDataChegada());
-        holder.textViewVencimento.setText(remedio.getDataVencimento());
-        holder.textViewQtdRemedio.setText(Double.toString(remedio.getQuantidade()));
+        holder.textViewRemedio.setText("Nome: "+remedio.getNome());
+        holder.textViewValor.setText("Valor: UY$ "+Double.toString(remedio.getValor()));
+        holder.textViewChegada.setText("Chegou: "+remedio.getDataChegada());
+        holder.textViewVencimento.setText("Vence: "+remedio.getDataVencimento());
+        holder.textViewQtdRemedio.setText("Quantidade: "+Double.toString(remedio.getQuantidade()) + " ml");
 
     }
 

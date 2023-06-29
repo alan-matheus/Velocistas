@@ -13,7 +13,9 @@ public class RegistrarRemedios extends AppCompatActivity {
 
     ActivityRegistrarRemediosBinding binding;
     private DBHelperCavalo dbHelper;
-    Cavalo cavalo;
+    private Cavalo cavalo;
+    private Integer cavaloId;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +23,7 @@ public class RegistrarRemedios extends AppCompatActivity {
         binding = ActivityRegistrarRemediosBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         cavalo = (Cavalo) getIntent().getSerializableExtra("cavalo");
-
+        cavaloId = getIntent().getIntExtra("cavaloId", -1);
         dbHelper = new DBHelperCavalo(this);
 
 
@@ -37,6 +39,7 @@ public class RegistrarRemedios extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(RegistrarRemedios.this, ListarRemedios.class);
                 intent.putExtra("cavalo", cavalo);
+                intent.putExtra("cavaloId", cavaloId);
                 startActivity(intent);
                 finish();
             }
@@ -75,8 +78,11 @@ public class RegistrarRemedios extends AppCompatActivity {
         dbHelper.addRemedio(remedio, cavalo);
         Toast.makeText(this, "Remédio adicionado com sucesso!", Toast.LENGTH_LONG).show();
         limparCampos();
-
-
+        Intent intent = new Intent(RegistrarRemedios.this, ListarRemedios.class);
+        intent.putExtra("cavalo", cavalo);
+        intent.putExtra("cavaloId", cavaloId);
+        startActivity(intent);
+        finish();
     }
 
     private double getQuantidadeFromInput() {

@@ -33,12 +33,12 @@ public class AdapterResultado extends RecyclerView.Adapter<AdapterResultado.View
     @Override
     public void onBindViewHolder(@NonNull AdapterResultado.ViewHolder holder, int position) {
         Resultado resultado = resultadosList.get(position);
-        holder.textViewResultado.setText(resultado.getNome());
-        holder.textViewTempo.setText(Double.toString(resultado.getTempo()));
-        holder.textViewData.setText(resultado.getData());
-        holder.textViewTerrenoResultado.setText(resultado.getTerreno());
-        holder.textViewJockeyResultado.setText(resultado.getJockey());
-        holder.textViewDistanciaResultado.setText(Integer.toString(resultado.getDistancia()));
+        holder.textViewResultado.setText("Resultado: "+resultado.getNome());
+    holder.textViewTempo.setText("Tempo: "+Double.toString(resultado.getTempo())+" s");
+        holder.textViewData.setText("Data: "+resultado.getData());
+        holder.textViewTerrenoResultado.setText("Terreno: "+resultado.getTerreno());
+        holder.textViewJockeyResultado.setText("Jockey: "+resultado.getJockey());
+        holder.textViewDistanciaResultado.setText("Distância: "+Integer.toString(resultado.getDistancia())+" mts");
     }
 
     @Override

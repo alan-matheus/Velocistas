@@ -99,25 +99,6 @@
         app:layout_constraintTop_toBottomOf="@+id/rgcav" />
 
     <EditText
-        android:id="@+id/inputRaca"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/input_bg"
-        android:ems="10"
-        android:hint="Raça"
-        android:inputType="textPersonName"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/inputNomeCavalo"
-        app:layout_constraintStart_toStartOf="@+id/inputNomeCavalo"
-        app:layout_constraintTop_toBottomOf="@+id/inputNomeCavalo" />
-
-    <EditText
         android:id="@+id/inputChegada"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -132,9 +113,9 @@
         android:paddingBottom="10dp"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/inputRaca"
-        app:layout_constraintStart_toStartOf="@+id/inputRaca"
-        app:layout_constraintTop_toBottomOf="@+id/inputRaca" />
+        app:layout_constraintEnd_toEndOf="@+id/inputNomeCavalo"
+        app:layout_constraintStart_toStartOf="@+id/inputNomeCavalo"
+        app:layout_constraintTop_toBottomOf="@+id/inputNomeCavalo" />
 
     <Button
         android:id="@+id/btnRegistraCavalo"
@@ -152,6 +133,21 @@
         app:layout_constraintStart_toStartOf="@+id/inputChegada"
         app:layout_constraintTop_toBottomOf="@+id/inputChegada"
         app:layout_constraintVertical_bias="0.297" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/input_bg"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/inputChegada"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/inputChegada"
+        app:layout_constraintTop_toBottomOf="@+id/inputChegada" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -148,21 +148,20 @@
         app:layout_constraintTop_toBottomOf="@+id/inputQuantidadeRemedio" />
 
 
-
     <Button
         android:id="@+id/btnRegistraRemedio"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="30dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/btnregistra"
         android:fontFamily="@font/alegreya_bold"
         android:text="Registra"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/inputVencimentoRemedio"
-        app:layout_constraintHorizontal_bias="0.987"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/inputVencimentoRemedio"
         app:layout_constraintTop_toBottomOf="@+id/inputVencimentoRemedio"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.529" />
 
     <EditText
         android:id="@+id/inputVencimentoRemedio"

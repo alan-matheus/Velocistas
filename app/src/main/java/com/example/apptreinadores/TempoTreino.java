@@ -4,12 +4,12 @@ public class TempoTreino {
 
     private Integer id;
     private double tempo;
-    private int distancia;
+    private Integer distancia;
     private String terreno;
     private String data;
     private String jockey;
 
-    public TempoTreino(Integer id, double tempo, int distancia, String terreno, String data, String jockey) {
+    public TempoTreino(Integer id, double tempo, Integer distancia, String terreno, String data, String jockey) {
         this.id = id;
         this.tempo = tempo;
         this.distancia = distancia;
@@ -34,11 +34,11 @@ public class TempoTreino {
         this.tempo = tempo;
     }
 
-    public int getDistancia() {
+    public Integer getDistancia() {
         return distancia;
     }
 
-    public void setDistancia(int distancia) {
+    public void setDistancia(Integer distancia) {
         this.distancia = distancia;
     }
 

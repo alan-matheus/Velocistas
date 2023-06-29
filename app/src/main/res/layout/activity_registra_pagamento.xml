@@ -67,27 +67,6 @@
         app:layout_constraintVertical_bias="0.097" />
 
     <EditText
-        android:id="@+id/inputTipoPagamento"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/input_bg"
-        android:ems="10"
-        android:hint="Tipo do Pagamento"
-        android:inputType="text"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="#000000"
-        android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rgrac" />
-
-    <EditText
         android:id="@+id/inputValorPagamento"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -102,9 +81,9 @@
         android:paddingBottom="10dp"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/inputTipoPagamento"
-        app:layout_constraintStart_toStartOf="@+id/inputTipoPagamento"
-        app:layout_constraintTop_toBottomOf="@+id/inputTipoPagamento" />
+        app:layout_constraintEnd_toEndOf="@+id/spinnerPag"
+        app:layout_constraintStart_toStartOf="@+id/spinnerPag"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerPag" />
 
     <EditText
         android:id="@+id/inputDataPagamento"
@@ -142,5 +121,20 @@
         app:layout_constraintStart_toStartOf="@+id/inputDataPagamento"
         app:layout_constraintTop_toBottomOf="@+id/inputDataPagamento"
         app:layout_constraintVertical_bias="0.297" />
+
+    <Spinner
+        android:id="@+id/spinnerPag"
+        android:layout_width="314dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/spinnerstyle"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rgrac" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

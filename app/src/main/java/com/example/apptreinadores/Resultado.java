@@ -5,12 +5,12 @@ public class Resultado {
     private Integer id;
     private String nome;
     private double tempo;
-    private int distancia;
+    private Integer distancia;
     private String terreno;
     private String data;
     private String jockey;
 
-    public Resultado(Integer id, String nome, double tempo, int distancia, String terreno, String data, String jockey) {
+    public Resultado(Integer id, String nome, double tempo, Integer distancia, String terreno, String data, String jockey) {
         this.id = id;
         this.nome = nome;
         this.tempo = tempo;
@@ -44,11 +44,11 @@ public class Resultado {
         this.tempo = tempo;
     }
 
-    public int getDistancia() {
+    public Integer getDistancia() {
         return distancia;
     }
 
-    public void setDistancia(int distancia) {
+    public void setDistancia(Integer distancia) {
         this.distancia = distancia;
     }
 

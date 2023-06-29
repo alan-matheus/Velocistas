@@ -58,6 +58,7 @@ public class ListarRemedios extends AppCompatActivity implements AdapterRemedio.
             public void onClick(View view) {
                 Intent intent = new Intent(ListarRemedios.this, RegistrarRemedios.class);
                 intent.putExtra("cavalo", cavalo);
+                intent.putExtra("cavaloId", cavaloId);
                 startActivity(intent);
                 finish();
             }

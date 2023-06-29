@@ -14,7 +14,7 @@ import java.util.List;
 
 public class ListarTempos extends AppCompatActivity implements AdapterTempo.OnItemClickListener{
     ActivityListarTemposBinding binding;
-    Cavalo cavalo;
+    private Cavalo cavalo;
     private Integer cavaloId;
     private AdapterTempo adapterTempo;
     private List<TempoTreino> tempoList;
@@ -55,6 +55,7 @@ public class ListarTempos extends AppCompatActivity implements AdapterTempo.OnIt
             public void onClick(View view) {
                 Intent intent = new Intent(ListarTempos.this, RegistrarTempoTreino.class);
                 intent.putExtra("cavalo", cavalo);
+                intent.putExtra("cavaloId", cavaloId);
                 startActivity(intent);
                 finish();
             }

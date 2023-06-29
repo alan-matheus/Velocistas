@@ -35,8 +35,8 @@ public class AdapterCavalo extends RecyclerView.Adapter<AdapterCavalo.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Cavalo cavalo = cavaloList.get(position);
         holder.textViewNome.setText(cavalo.getNome());
-        holder.textViewRaca.setText( cavalo.getRaca());
-        holder.textViewChegada.setText(cavalo.getDataChegada());
+        holder.textViewRaca.setText("Raça: "+ cavalo.getRaca());
+        holder.textViewChegada.setText("Chegou: "+cavalo.getDataChegada());
     }
 
     @Override

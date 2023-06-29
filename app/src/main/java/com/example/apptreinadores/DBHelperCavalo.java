@@ -403,7 +403,7 @@ public class DBHelperCavalo extends SQLiteOpenHelper {
                 String nome = cursor.getString(cursor.getColumnIndex(COLUNA_NOME_RESULTADO));
                 String terreno = cursor.getString(cursor.getColumnIndex(COLUNA_TERRENO_RESULTADO));
                 double tempo = cursor.getDouble(cursor.getColumnIndex(COLUNA_TEMPO_RESULTADO));
-                int distancia = cursor.getInt(cursor.getColumnIndex(COLUNA_DISTANCIA_RESULTADO));
+                Integer distancia = cursor.getInt(cursor.getColumnIndex(COLUNA_DISTANCIA_RESULTADO));
                 String dataResultado = cursor.getString(cursor.getColumnIndex(COLUNA_DATA_RESULTADO));
                 String jockeyResultado = cursor.getString(cursor.getColumnIndex(COLUNA_JOCKEY_RESULTADO));
 
@@ -454,7 +454,7 @@ public class DBHelperCavalo extends SQLiteOpenHelper {
                 int id = cursor.getInt(cursor.getColumnIndex(COLUNA_ID_TEMPO));
                 String terreno = cursor.getString(cursor.getColumnIndex(COLUNA_TERRENO_TEMPO));
                 double tempo = cursor.getDouble(cursor.getColumnIndex(COLUNA_TEMPO_TEMPO));
-                int distancia = cursor.getInt(cursor.getColumnIndex(COLUNA_DISTANCIA_TEMPO));
+                Integer distancia = cursor.getInt(cursor.getColumnIndex(COLUNA_DISTANCIA_TEMPO));
                 String dataTempo = cursor.getString(cursor.getColumnIndex(COLUNA_DATA_TEMPO));
                 String jockeyTempo = cursor.getString(cursor.getColumnIndex(COLUNA_JOCKEY_TEMPO));
 

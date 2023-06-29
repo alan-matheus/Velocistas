@@ -14,7 +14,8 @@ public class RegistrarRacoes extends AppCompatActivity {
 
     ActivityRegistrarRacoesBinding binding;
     private DBHelperCavalo dbHelper;
-    Cavalo cavalo;
+    private Cavalo cavalo;
+    private Integer cavaloId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +23,7 @@ public class RegistrarRacoes extends AppCompatActivity {
         binding = ActivityRegistrarRacoesBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         cavalo = (Cavalo) getIntent().getSerializableExtra("cavalo");
-
+        cavaloId = getIntent().getIntExtra("cavaloId", -1);
         dbHelper = new DBHelperCavalo(this);
 
 
@@ -38,6 +39,7 @@ public class RegistrarRacoes extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(RegistrarRacoes.this, ListarRacoes.class);
                 intent.putExtra("cavalo", cavalo);
+                intent.putExtra("cavaloId", cavaloId);
                 startActivity(intent);
                 finish();
             }
@@ -73,7 +75,11 @@ public class RegistrarRacoes extends AppCompatActivity {
         dbHelper.addRacao(racao, cavalo);
         Toast.makeText(this, "Ração adicionado com sucesso!", Toast.LENGTH_LONG).show();
         limparCampos();
-
+        Intent intent = new Intent(RegistrarRacoes.this, ListarRacoes.class);
+        intent.putExtra("cavalo", cavalo);
+        intent.putExtra("cavaloId", cavaloId);
+        startActivity(intent);
+        finish();
 
     }
 

@@ -21,7 +21,6 @@ public class ListarRacoes extends AppCompatActivity implements AdapterRacao.OnIt
     private DBHelperCavalo dbHelper;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +56,7 @@ public class ListarRacoes extends AppCompatActivity implements AdapterRacao.OnIt
             public void onClick(View view) {
                 Intent intent = new Intent(ListarRacoes.this, RegistrarRacoes.class);
                 intent.putExtra("cavalo", cavalo);
+                intent.putExtra("cavaloId", cavaloId);
                 startActivity(intent);
                 finish();
             }

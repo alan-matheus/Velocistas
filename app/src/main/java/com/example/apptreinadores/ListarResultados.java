@@ -15,7 +15,7 @@ import java.util.List;
 
 public class ListarResultados extends AppCompatActivity implements AdapterResultado.OnItemClickListener{
     ActivityListarResultadosBinding binding;
-    Cavalo cavalo;
+    private Cavalo cavalo;
     private Integer cavaloId;
     private AdapterResultado adapterResultado;
     private List<Resultado> resultadosList;
@@ -56,6 +56,7 @@ public class ListarResultados extends AppCompatActivity implements AdapterResult
             public void onClick(View view) {
                 Intent intent = new Intent(ListarResultados.this, RegistrarResultado.class);
                 intent.putExtra("cavalo", cavalo);
+                intent.putExtra("cavaloId", cavaloId);
                 startActivity(intent);
                 finish();
             }
