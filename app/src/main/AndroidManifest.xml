@@ -13,6 +13,13 @@
         android:theme="@style/Theme.AppTreinadores"
         tools:targetApi="31">
         <activity
+            android:name=".EditarCavalo"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ListarTempos"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.NoActionBar">
@@ -62,10 +69,12 @@
         </activity>
         <activity
             android:name=".RegistrarPagamento"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".RegistrarTempoTreino"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".RegistrarResultado"
             android:exported="false"

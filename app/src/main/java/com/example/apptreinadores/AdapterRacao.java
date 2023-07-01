@@ -27,7 +27,7 @@ public class AdapterRacao extends RecyclerView.Adapter<AdapterRacao.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull AdapterRacao.ViewHolder holder, int position) {
         Racao racao = racaoList.get(position);
-        holder.textViewRacao.setText("Nome: "+racao.getNome());
+        holder.textViewRacao.setText(racao.getNome());
         holder.textViewValor.setText("Valor: UY$ "+Double.toString(racao.getValor()));
         holder.textViewChegada.setText("Chegou: "+racao.getDataChegada());
         holder.textViewQuantidade.setText("Quantidade: "+Double.toString(racao.getQuantidade())+" kg");
@@ -48,11 +48,11 @@ public class AdapterRacao extends RecyclerView.Adapter<AdapterRacao.ViewHolder> 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            textViewRacao = itemView.findViewById(R.id.textViewRaca);
+            textViewRacao = itemView.findViewById(R.id.textViewRacao);
             textViewValor = itemView.findViewById(R.id.textViewValor);
             textViewChegada = itemView.findViewById(R.id.textViewChegada);
             textViewQuantidade = itemView.findViewById(R.id.textViewQuantidade);
-            textViewQtdAtual = itemView.findViewById(R.id.textViewQtdAtual);
+            //textViewQtdAtual = itemView.findViewById(R.id.textViewQtdAtual);
             itemView.setOnClickListener(this);
         }
 

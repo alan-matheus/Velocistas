@@ -216,6 +216,22 @@ public class DBHelperCavalo extends SQLiteOpenHelper {
 
     }
 
+    public void excluirCavalo(Cavalo cavalo) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(NOME_TABELA, COLUNA_ID + " = ?", new String[]{String.valueOf(cavalo.getId())});
+        db.close();
+    }
+
+    public void editarCavalo(Cavalo cavalo) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUNA_NOME, cavalo.getNome());
+        values.put(COLUNA_RACA, cavalo.getRaca());
+        values.put(COLUNA_CHEGADA, cavalo.getDataChegada());
+        db.update(NOME_TABELA, values, COLUNA_ID + " = ?", new String[]{String.valueOf(cavalo.getId())});
+        db.close();
+    }
+
     public void addRemedio(Remedio r, Cavalo c){
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -279,7 +295,7 @@ public class DBHelperCavalo extends SQLiteOpenHelper {
         values.put(COLUNA_VALOR_RACAO, r.getValor());
         values.put(COLUNA_ID_CAVALO_RACAO, c.getId());
 
-        db.insert("remedio", null, values);
+        db.insert("racao", null, values);
         db.close();
 
     }
@@ -293,7 +309,7 @@ public class DBHelperCavalo extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         String query = "SELECT * FROM " + NOME_TABELA_RACAO +
-                " WHERE " + COLUNA_ID_CAVALO_REMEDIO + " = " + cavaloId;
+                " WHERE " + COLUNA_ID_CAVALO_RACAO + " = " + cavaloId;
 
         Cursor cursor = db.rawQuery(query, null);
 

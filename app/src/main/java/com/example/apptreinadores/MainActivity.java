@@ -6,7 +6,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.PopupMenu;
+import android.widget.Toast;
 
 import com.example.apptreinadores.databinding.ActivityMainBinding;
 
@@ -35,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements AdapterCavalo.OnI
         binding.rv.setAdapter(ca);
 
         carregaDados();
+        configurarRecyclerView();
 
         binding.btnRegistra.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,13 +51,57 @@ public class MainActivity extends AppCompatActivity implements AdapterCavalo.OnI
 
     }
 
+    private void configurarRecyclerView() {
+
+        // Configurar o PopupMenu para os botões de opções nos CardViews
+        ca.setOnButtonOptionsClickListener(new AdapterCavalo.OnButtonOptionsClickListener() {
+            @Override
+            public void onOptionsClick(View view, Cavalo cavalo) {
+                PopupMenu popupMenu = new PopupMenu(MainActivity.this, view);
+                popupMenu.getMenuInflater().inflate(R.menu.popup_menu, popupMenu.getMenu());
+
+                // Configurar ações para os itens do menu
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.menu_editar:
+                                editarCavalo(cavalo);
+                                return true;
+                            case R.id.menu_excluir:
+                                excluirCavalo(cavalo);
+                                return true;
+                            default:
+                                return false;
+                        }
+                    }
+                });
+
+                popupMenu.show();
+            }
+        });
+
+    }
+
+    private void excluirCavalo(Cavalo cavalo) {
+        dbHelper.excluirCavalo(cavalo);
+        carregaDados();
+        Toast.makeText(this, "Cavalo excluído com sucesso!", Toast.LENGTH_SHORT).show();
+    }
+
+    private void editarCavalo(Cavalo cavalo) {
+        // Iniciar a activity de edição de cavalo e passar o objeto Cavalo para edição
+        Intent intent = new Intent(MainActivity.this, EditarCavalo.class);
+        intent.putExtra("cavalo", cavalo);
+        startActivity(intent);
+    }
+
     public void onItemClick(Cavalo cavalo){
         Intent intent = new Intent(MainActivity.this, Menu.class);
         intent.putExtra("cavaloId", cavalo.getId());
         intent.putExtra("cavalo", cavalo);
         startActivity(intent);
     }
-
 
     private void carregaDados(){
         cavaloList.clear();
@@ -62,13 +110,17 @@ public class MainActivity extends AppCompatActivity implements AdapterCavalo.OnI
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        carregaDados();
+    }
+
+
+    @Override
     protected void onDestroy(){
         super.onDestroy();
         dbCavalo.close();
 
     }
-
-
-
 
 }

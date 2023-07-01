@@ -127,6 +127,10 @@ public class RegistrarCavalo extends AppCompatActivity {
         Toast.makeText(this, "Cavalo Adicionado com sucesso!", Toast.LENGTH_LONG).show();
 
         limparCampos();
+
+        Intent intent = new Intent(RegistrarCavalo.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void limparCampos(){

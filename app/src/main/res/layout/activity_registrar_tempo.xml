@@ -86,7 +86,7 @@
         android:background="@drawable/input_bg"
         android:ems="10"
         android:hint="Tempo (segundos)"
-        android:inputType="textPersonName"
+        android:inputType="numberDecimal"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingRight="10dp"
@@ -137,20 +137,20 @@
 
     <Button
         android:id="@+id/btnRegistraTempoTreino"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="75dp"
+        android:layout_width="87dp"
+        android:layout_height="87dp"
+        android:layout_marginTop="6dp"
         android:background="@drawable/btnregistra"
         android:fontFamily="@font/alegreya_bold"
         android:text="Registra"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/inputDataTempo"
-        app:layout_constraintHorizontal_bias="0.987"
-        app:layout_constraintStart_toStartOf="@+id/inputDataTempo"
-        app:layout_constraintTop_toBottomOf="@+id/inputDataTempo"
-        app:layout_constraintVertical_bias="0.475" />
+        app:layout_constraintEnd_toEndOf="@+id/inputJockeyTempo"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/inputJockeyTempo"
+        app:layout_constraintTop_toBottomOf="@+id/inputJockeyTempo"
+        app:layout_constraintVertical_bias="0.448" />
 
     <EditText
         android:id="@+id/inputJockeyTempo"
@@ -165,6 +165,7 @@
         android:paddingTop="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
+        android:textColor="@color/black"
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/spinnerTerrenoTreino"
         app:layout_constraintStart_toStartOf="@+id/spinnerTerrenoTreino"

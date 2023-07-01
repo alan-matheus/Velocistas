@@ -4,9 +4,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.recyclerview.widget.RecyclerView;
 
 
@@ -16,13 +19,22 @@ public class AdapterCavalo extends RecyclerView.Adapter<AdapterCavalo.ViewHolder
 
     private List<Cavalo> cavaloList;
     private OnItemClickListener listener;
-
+    private OnButtonOptionsClickListener onButtonOptionsClickListener;
 
     public AdapterCavalo(List<Cavalo> cavaloList, OnItemClickListener listener) {
         this.cavaloList = cavaloList;
         this.listener = listener;
 
     }
+
+    public interface OnButtonOptionsClickListener {
+        void onOptionsClick(View view, Cavalo cavalo);
+    }
+
+    public void setOnButtonOptionsClickListener(OnButtonOptionsClickListener listener) {
+        this.onButtonOptionsClickListener = listener;
+    }
+
 
     @NonNull
     @Override
@@ -37,6 +49,15 @@ public class AdapterCavalo extends RecyclerView.Adapter<AdapterCavalo.ViewHolder
         holder.textViewNome.setText(cavalo.getNome());
         holder.textViewRaca.setText("Raça: "+ cavalo.getRaca());
         holder.textViewChegada.setText("Chegou: "+cavalo.getDataChegada());
+
+        holder.opcoes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onButtonOptionsClickListener != null) {
+                    onButtonOptionsClickListener.onOptionsClick(v, cavalo);
+                }
+            }
+        });
     }
 
     @Override
@@ -48,12 +69,13 @@ public class AdapterCavalo extends RecyclerView.Adapter<AdapterCavalo.ViewHolder
         private TextView textViewNome;
         private TextView textViewRaca;
         private TextView textViewChegada;
-
+        private ImageButton opcoes;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textViewNome = itemView.findViewById(R.id.textViewNome);
             textViewRaca = itemView.findViewById(R.id.textViewRaca);
             textViewChegada = itemView.findViewById(R.id.textViewChegada);
+            opcoes = itemView.findViewById(R.id.opcoes);
             itemView.setOnClickListener(this);
         }
 
