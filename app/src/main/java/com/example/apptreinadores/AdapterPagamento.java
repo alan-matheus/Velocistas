@@ -3,6 +3,7 @@ package com.example.apptreinadores;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,10 +15,20 @@ public class AdapterPagamento extends RecyclerView.Adapter<AdapterPagamento.View
 
     private List<Pagamento> pagamentosList;
     private OnItemClickListener listener;
+    private AdapterPagamento.OnButtonOptionsClickListener onButtonOptionsClickListener;
+
 
     public AdapterPagamento(List<Pagamento> pagamentosList, OnItemClickListener listener){
         this.pagamentosList = pagamentosList;
         this.listener = listener;
+    }
+
+    public interface OnButtonOptionsClickListener {
+        void onOptionsClick(View view, Pagamento pagamento);
+    }
+
+    public void setOnButtonOptionsClickListener(AdapterPagamento.OnButtonOptionsClickListener listener) {
+        this.onButtonOptionsClickListener = listener;
     }
 
     @NonNull
@@ -30,10 +41,20 @@ public class AdapterPagamento extends RecyclerView.Adapter<AdapterPagamento.View
     @Override
     public void onBindViewHolder(@NonNull AdapterPagamento.ViewHolder holder, int position) {
         Pagamento pagamento = pagamentosList.get(position);
-        holder.textViewPagamento.setText("Pagamento: "+pagamento.getNome());
+        holder.textViewPagamento.setText(pagamento.getNome());
         holder.textViewValor.setText("Valor: UY$ "+Double.toString(pagamento.getValor()));
         holder.textViewData.setText("Data: "+pagamento.getData());
+
+        holder.opcoes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onButtonOptionsClickListener != null) {
+                    onButtonOptionsClickListener.onOptionsClick(v, pagamento);
+                }
+            }
+        });
     }
+
     @Override
     public int getItemCount() {
         return pagamentosList.size();
@@ -43,12 +64,14 @@ public class AdapterPagamento extends RecyclerView.Adapter<AdapterPagamento.View
         private TextView textViewPagamento;
         private TextView textViewValor;
         private TextView textViewData;
+        private ImageButton opcoes;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textViewPagamento = itemView.findViewById(R.id.textViewPagamento);
             textViewValor = itemView.findViewById(R.id.textViewValor);
             textViewData = itemView.findViewById(R.id.textViewData);
+            opcoes = itemView.findViewById(R.id.opcoes);
             itemView.setOnClickListener(this);
         }
 

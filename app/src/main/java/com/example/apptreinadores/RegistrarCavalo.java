@@ -99,8 +99,8 @@ public class RegistrarCavalo extends AppCompatActivity {
     private List<String> getOpcoesRaca(){
         List<String> opcoesRaca = new ArrayList<>();
         opcoesRaca.add("Selecione a raça:");
-        opcoesRaca.add("Puro Sangue Inglês");
-        opcoesRaca.add("Quardo de Milha");
+        opcoesRaca.add("Puro Sangue");
+        opcoesRaca.add("Quarto de Milha");
         opcoesRaca.add("Mestiço");
 
         return opcoesRaca;

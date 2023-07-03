@@ -104,7 +104,7 @@ public class DBHelperCavalo extends SQLiteOpenHelper {
                 COLUNA_CHEGADA_REMEDIO + " TEXT, " +
                 COLUNA_ID_CAVALO_REMEDIO + " INTEGER, " +
                 "FOREIGN KEY (" + COLUNA_ID_CAVALO_REMEDIO + ") REFERENCES " +
-                 NOME_TABELA + "(" + COLUNA_ID + ")" +
+                 NOME_TABELA + "(" + COLUNA_ID + ") ON DELETE CASCADE" +
                 ")";
 
         db.execSQL(createRemedioTable);
@@ -119,7 +119,7 @@ public class DBHelperCavalo extends SQLiteOpenHelper {
                 COLUNA_CHEGADA_RACAO+ " TEXT, " +
                 COLUNA_ID_CAVALO_RACAO + " INTEGER, " +
                 "FOREIGN KEY (" + COLUNA_ID_CAVALO_RACAO+ ") REFERENCES " +
-                NOME_TABELA + "(" + COLUNA_ID + ")" +
+                NOME_TABELA + "(" + COLUNA_ID + ") ON DELETE CASCADE" +
                 ")";
 
         db.execSQL(createRacaoTable);
@@ -132,7 +132,7 @@ public class DBHelperCavalo extends SQLiteOpenHelper {
                 COLUNA_DATA_PAGAMENTO+ " TEXT, " +
                 COLUNA_ID_CAVALO_PAGAMENTO + " INTEGER, " +
                 "FOREIGN KEY (" + COLUNA_ID_CAVALO_PAGAMENTO+ ") REFERENCES " +
-                NOME_TABELA + "(" + COLUNA_ID + ")" +
+                NOME_TABELA + "(" + COLUNA_ID + ") ON DELETE CASCADE" +
                 ")";
 
         db.execSQL(createPagamentoTable);
@@ -148,7 +148,7 @@ public class DBHelperCavalo extends SQLiteOpenHelper {
                 COLUNA_JOCKEY_RESULTADO+ " TEXT, " +
                 COLUNA_ID_CAVALO_RESULTADO + " INTEGER, " +
                 "FOREIGN KEY (" + COLUNA_ID_CAVALO_RESULTADO+ ") REFERENCES " +
-                NOME_TABELA + "(" + COLUNA_ID + ")" +
+                NOME_TABELA + "(" + COLUNA_ID + ") ON DELETE CASCADE" +
                 ")";
 
         db.execSQL(createResultadoTable);
@@ -163,7 +163,7 @@ public class DBHelperCavalo extends SQLiteOpenHelper {
                 COLUNA_JOCKEY_TEMPO+ " TEXT, " +
                 COLUNA_ID_CAVALO_TEMPO + " INTEGER, " +
                 "FOREIGN KEY (" + COLUNA_ID_CAVALO_TEMPO+ ") REFERENCES " +
-                NOME_TABELA + "(" + COLUNA_ID + ")" +
+                NOME_TABELA + "(" + COLUNA_ID + ") ON DELETE CASCADE" +
                 ")";
 
         db.execSQL(createTempoTable);
@@ -283,6 +283,25 @@ public class DBHelperCavalo extends SQLiteOpenHelper {
         return remedioList;
     }
 
+    public void excluirRemedio(Remedio remedio) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(NOME_TABELA_REMEDIO, COLUNA_ID_REMEDIO + " = ?", new String[]{String.valueOf(remedio.getId())});
+        db.close();
+    }
+
+    public void editarRemedio(Remedio r) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUNA_NOME, r.getNome());
+        values.put(COLUNA_QUANTIDADE_REMEDIO, r.getQuantidade());
+        values.put(COLUNA_VALIDADE_REMEDIO, r.getDataVencimento());
+        values.put(COLUNA_CHEGADA_REMEDIO, r.getDataChegada());
+        values.put(COLUNA_VALOR_REMEDIO, r.getValor());
+
+        db.update(NOME_TABELA_REMEDIO, values, COLUNA_ID_REMEDIO + " = ?", new String[]{String.valueOf(r.getId())});
+        db.close();
+    }
+
     public void addRacao(Racao r, Cavalo c){
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -333,6 +352,25 @@ public class DBHelperCavalo extends SQLiteOpenHelper {
         return racaoList;
     }
 
+    public void excluirRacao(Racao racao) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(NOME_TABELA_RACAO, COLUNA_ID_RACAO + " = ?", new String[]{String.valueOf(racao.getId())});
+        db.close();
+    }
+
+    public void editarRacao(Racao r) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(COLUNA_NOME, r.getNome());
+        values.put(COLUNA_QUANTIDADE_RACAO, r.getQuantidade());
+        values.put(COLUNA_CHEGADA_RACAO, r.getDataChegada());
+        values.put(COLUNA_VALOR_RACAO, r.getValor());
+
+        db.update(NOME_TABELA_RACAO, values, COLUNA_ID_RACAO + " = ?", new String[]{String.valueOf(r.getId())});
+        db.close();
+    }
+
     public void addPagamento(Pagamento p, Cavalo c){
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -380,6 +418,25 @@ public class DBHelperCavalo extends SQLiteOpenHelper {
         return pagamentosList;
     }
 
+    public void excluirPagamento(Pagamento pagamento) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(NOME_TABELA_PAGAMENTO, COLUNA_ID_PAGAMENTO + " = ?", new String[]{String.valueOf(pagamento.getId())});
+        db.close();
+    }
+
+    public void editarPagamento(Pagamento p) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(COLUNA_NOME_PAGAMENTO, p.getNome());
+        values.put(COLUNA_VALOR_PAGAMENTO, p.getValor());
+        values.put(COLUNA_DATA_PAGAMENTO, p.getData());
+
+        db.update(NOME_TABELA_PAGAMENTO, values, COLUNA_ID_PAGAMENTO + " = ?", new String[]{String.valueOf(p.getId())});
+        db.close();
+    }
+
+
     public void addResultado(Resultado r, Cavalo c){
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -398,7 +455,6 @@ public class DBHelperCavalo extends SQLiteOpenHelper {
         db.close();
 
     }
-
 
     @SuppressLint("Range")
     public List<Resultado> getResultadosByCavaloId (Integer cavaloId) {
@@ -432,6 +488,27 @@ public class DBHelperCavalo extends SQLiteOpenHelper {
         db.close();
 
         return resultadosList;
+    }
+
+    public void excluirResultado(Resultado resultado) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(NOME_TABELA_RESULTADO, COLUNA_ID_RESULTADO + " = ?", new String[]{String.valueOf(resultado.getId())});
+        db.close();
+    }
+
+    public void editarResultado(Resultado r) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(COLUNA_NOME_RESULTADO, r.getNome());
+        values.put(COLUNA_TERRENO_RESULTADO, r.getTerreno());
+        values.put(COLUNA_TEMPO_RESULTADO, r.getTempo());
+        values.put(COLUNA_DISTANCIA_RESULTADO, r.getDistancia());
+        values.put(COLUNA_DATA_RESULTADO, r.getData());
+        values.put(COLUNA_JOCKEY_RESULTADO, r.getJockey());
+
+        db.update(NOME_TABELA_RESULTADO, values, COLUNA_ID_RESULTADO + " = ?", new String[]{String.valueOf(r.getId())});
+        db.close();
     }
 
     public void addTempoTreino(TempoTreino t, Cavalo c){
@@ -485,7 +562,25 @@ public class DBHelperCavalo extends SQLiteOpenHelper {
         return temposList;
     }
 
+    public void excluirTempo(TempoTreino tempoTreino) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(NOME_TABELA_TEMPO, COLUNA_ID_TEMPO + " = ?", new String[]{String.valueOf(tempoTreino.getId())});
+        db.close();
+    }
 
+    public void editarTempo(TempoTreino t) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(COLUNA_TEMPO_TEMPO, t.getTempo());
+        values.put(COLUNA_DISTANCIA_TEMPO, t.getDistancia());
+        values.put(COLUNA_TERRENO_TEMPO, t.getTerreno());
+        values.put(COLUNA_DATA_TEMPO, t.getData());
+        values.put(COLUNA_JOCKEY_TEMPO, t.getJockey());
+
+        db.update(NOME_TABELA_TEMPO, values, COLUNA_ID_TEMPO + " = ?", new String[]{String.valueOf(t.getId())});
+        db.close();
+    }
 
 
 }

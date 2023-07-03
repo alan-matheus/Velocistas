@@ -3,6 +3,7 @@ package com.example.apptreinadores;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,12 +16,21 @@ public class AdapterResultado extends RecyclerView.Adapter<AdapterResultado.View
 
     private List<Resultado> resultadosList;
     private AdapterResultado.OnItemClickListener listener;
+    private AdapterResultado.OnButtonOptionsClickListener onButtonOptionsClickListener;
 
 
     public AdapterResultado(List<Resultado> resultadosList, AdapterResultado.OnItemClickListener listener) {
         this.resultadosList = resultadosList;
         this.listener = listener;
 
+    }
+
+    public interface OnButtonOptionsClickListener {
+        void onOptionsClick(View view, Resultado resultado);
+    }
+
+    public void setOnButtonOptionsClickListener(AdapterResultado.OnButtonOptionsClickListener listener) {
+        this.onButtonOptionsClickListener = listener;
     }
 
     @NonNull
@@ -33,12 +43,21 @@ public class AdapterResultado extends RecyclerView.Adapter<AdapterResultado.View
     @Override
     public void onBindViewHolder(@NonNull AdapterResultado.ViewHolder holder, int position) {
         Resultado resultado = resultadosList.get(position);
-        holder.textViewResultado.setText("Resultado: "+resultado.getNome());
+        holder.textViewResultado.setText(resultado.getNome());
     holder.textViewTempo.setText("Tempo: "+Double.toString(resultado.getTempo())+" s");
         holder.textViewData.setText("Data: "+resultado.getData());
         holder.textViewTerrenoResultado.setText("Terreno: "+resultado.getTerreno());
         holder.textViewJockeyResultado.setText("Jockey: "+resultado.getJockey());
         holder.textViewDistanciaResultado.setText("Distância: "+Integer.toString(resultado.getDistancia())+" mts");
+
+        holder.opcoes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onButtonOptionsClickListener != null) {
+                    onButtonOptionsClickListener.onOptionsClick(v, resultado);
+                }
+            }
+        });
     }
 
     @Override
@@ -53,6 +72,7 @@ public class AdapterResultado extends RecyclerView.Adapter<AdapterResultado.View
         private TextView textViewTerrenoResultado;
         private TextView textViewJockeyResultado;
         private TextView textViewDistanciaResultado;
+        private ImageButton opcoes;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -63,6 +83,7 @@ public class AdapterResultado extends RecyclerView.Adapter<AdapterResultado.View
             textViewTerrenoResultado = itemView.findViewById(R.id.textViewTerrenoResultado);
             textViewJockeyResultado = itemView.findViewById(R.id.textViewJockeyResultado);
             textViewDistanciaResultado = itemView.findViewById(R.id.textViewDistanciaResultado);
+            opcoes = itemView.findViewById(R.id.opcoes);
             itemView.setOnClickListener(this);
         }
 

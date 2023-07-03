@@ -1,6 +1,8 @@
 package com.example.apptreinadores;
 
-public class Resultado {
+import java.io.Serializable;
+
+public class Resultado implements Serializable {
 
     private Integer id;
     private String nome;

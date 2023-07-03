@@ -1,6 +1,8 @@
 package com.example.apptreinadores;
 
-public class TempoTreino {
+import java.io.Serializable;
+
+public class TempoTreino implements Serializable {
 
     private Integer id;
     private double tempo;

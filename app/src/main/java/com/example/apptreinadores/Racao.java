@@ -1,6 +1,8 @@
 package com.example.apptreinadores;
 
-public class Racao {
+import java.io.Serializable;
+
+public class Racao implements Serializable {
     private Integer id;
     private String nome;
     private double quantidade;

@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,11 +16,20 @@ public class AdapterRemedio extends RecyclerView.Adapter<AdapterRemedio.ViewHold
 
     private List<Remedio> remedioList;
     private OnItemClickListener listener;
+    private AdapterRemedio.OnButtonOptionsClickListener onButtonOptionsClickListener;
 
 
     public AdapterRemedio(List<Remedio> remedioList, OnItemClickListener listener){
         this.remedioList = remedioList;
         this.listener = listener;
+    }
+
+    public interface OnButtonOptionsClickListener {
+        void onOptionsClick(View view, Remedio remedio);
+    }
+
+    public void setOnButtonOptionsClickListener(AdapterRemedio.OnButtonOptionsClickListener listener) {
+        this.onButtonOptionsClickListener = listener;
     }
 
     @NonNull
@@ -32,12 +42,20 @@ public class AdapterRemedio extends RecyclerView.Adapter<AdapterRemedio.ViewHold
     @Override
     public void onBindViewHolder(@NonNull AdapterRemedio.ViewHolder holder, int position) {
         Remedio remedio = remedioList.get(position);
-        holder.textViewRemedio.setText("Nome: "+remedio.getNome());
+        holder.textViewRemedio.setText(remedio.getNome());
         holder.textViewValor.setText("Valor: UY$ "+Double.toString(remedio.getValor()));
         holder.textViewChegada.setText("Chegou: "+remedio.getDataChegada());
         holder.textViewVencimento.setText("Vence: "+remedio.getDataVencimento());
         holder.textViewQtdRemedio.setText("Quantidade: "+Double.toString(remedio.getQuantidade()) + " ml");
 
+        holder.opcoes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onButtonOptionsClickListener != null) {
+                    onButtonOptionsClickListener.onOptionsClick(v, remedio);
+                }
+            }
+        });
     }
 
     @Override
@@ -52,6 +70,7 @@ public class AdapterRemedio extends RecyclerView.Adapter<AdapterRemedio.ViewHold
         private TextView textViewVencimento;
         private TextView textViewQtdRemedio;
         private TextView textViewQtdAtualRemedio;
+        private ImageButton opcoes;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -60,6 +79,7 @@ public class AdapterRemedio extends RecyclerView.Adapter<AdapterRemedio.ViewHold
             textViewChegada = itemView.findViewById(R.id.textViewChegada);
             textViewVencimento = itemView.findViewById(R.id.textViewVencimento);
             textViewQtdRemedio = itemView.findViewById(R.id.textViewQtdRemedio);
+            opcoes = itemView.findViewById(R.id.opcoes);
             textViewQtdAtualRemedio = itemView.findViewById(R.id.textViewQtdAtualRemedio);
 
             itemView.setOnClickListener(this);

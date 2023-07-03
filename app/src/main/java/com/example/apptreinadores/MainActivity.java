@@ -1,13 +1,16 @@
 package com.example.apptreinadores;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
@@ -82,11 +85,34 @@ public class MainActivity extends AppCompatActivity implements AdapterCavalo.OnI
         });
 
     }
-
     private void excluirCavalo(Cavalo cavalo) {
-        dbHelper.excluirCavalo(cavalo);
-        carregaDados();
-        Toast.makeText(this, "Cavalo excluído com sucesso!", Toast.LENGTH_SHORT).show();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertaExcluirStyle);
+        builder.setTitle("Confirmação");
+        builder.setMessage("Deseja excluir o cavalo " + cavalo.getNome() + "?");
+        builder.setPositiveButton("Excluir", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Lógica para excluir o cavalo
+                dbHelper.excluirCavalo(cavalo);
+                carregaDados();
+                Toast.makeText(MainActivity.this, "Cavalo excluído com sucesso!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.setNegativeButton("Cancelar", null);
+
+        AlertDialog dialog = builder.create();
+
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialog) {
+                Button positiveButton = ((AlertDialog) dialog).getButton(DialogInterface.BUTTON_POSITIVE);
+                positiveButton.setTextColor(getResources().getColor(R.color.white));
+                Button negativeButton = ((AlertDialog) dialog).getButton(DialogInterface.BUTTON_NEGATIVE);
+                negativeButton.setTextColor(getResources().getColor(R.color.white));
+            }
+        });
+
+        dialog.show();
     }
 
     private void editarCavalo(Cavalo cavalo) {

@@ -18,7 +18,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="130dp"
+            android:layout_height="wrap_content"
+            android:background="@color/ma"
             android:orientation="horizontal"
             android:padding="6dp">
 
@@ -32,15 +33,16 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="2dp"
                 android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textStyle="bold" />
 
 
             <LinearLayout
                 android:id="@+id/linearLayout"
-                android:layout_width="130dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
+                android:layout_centerVertical="true"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="4dp"
                 android:layout_marginTop="2dp"
@@ -55,7 +57,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="3dp"
                     android:textAppearance="?android:textAppearanceSmall"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/textViewData"
@@ -63,7 +66,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="3dp"
                     android:textAppearance="?android:textAppearanceSmall"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/textViewTerrenoResultado"
@@ -71,7 +75,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="3dp"
                     android:textAppearance="?android:textAppearanceSmall"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/textViewJockeyResultado"
@@ -79,7 +84,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="3dp"
                     android:textAppearance="?android:textAppearanceSmall"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/textViewDistanciaResultado"
@@ -87,8 +93,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="3dp"
                     android:textAppearance="?android:textAppearanceSmall"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
             </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/opcoes"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="3dp"
+                android:background="@color/ma"
+                android:src="@drawable/mais" />
 
 
         </RelativeLayout>
