@@ -23,5 +23,19 @@
         <!-- Define a cor do texto do título do diálogo -->
         <item name="android:textColor">#FFFFFF</item>
     </style>
+    <style name="AlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="editTextStyle">@style/EditTextStyle</item>
+        <!-- Define a cor de fundo do diálogo -->
+        <item name="android:background">@color/ma</item>
+        <!-- Define a cor do texto do título do diálogo -->
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="EditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="colorControlNormal">#ffffff</item>
+        <item name="colorControlActivated">#ffffff</item>
+        <item name="colorControlHighlight">#ffffff</item>
+
+    </style>
 
 </resources>

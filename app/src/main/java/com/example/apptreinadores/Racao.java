@@ -6,7 +6,7 @@ public class Racao implements Serializable {
     private Integer id;
     private String nome;
     private double quantidade;
-    //private double qtdAtual;
+    private double qtdAtual;
     private double valor;
     private String dataChegada;
 
@@ -16,6 +16,7 @@ public class Racao implements Serializable {
         this.quantidade = quantidade;
         this.valor = valor;
         this.dataChegada = dataChegada;
+        this.qtdAtual = quantidade;
 
     }
 
@@ -43,14 +44,14 @@ public class Racao implements Serializable {
     public void setQuantidade(double quantidade) {
         this.quantidade = quantidade;
     }
-/*
+
     public double getQtdAtual() {
         return qtdAtual;
     }
 
     public void setQtdAtual(double qtdAtual) {
         this.qtdAtual = qtdAtual;
-    }*/
+    }
 
     public double getValor() {
         return valor;
@@ -66,5 +67,17 @@ public class Racao implements Serializable {
 
     public void setDataChegada(String dataChegada) {
         this.dataChegada = dataChegada;
+    }
+
+    public void retirarQuantidade(double quantidadeRetirada) {
+        if (quantidadeRetirada <= 0) {
+            throw new IllegalArgumentException("A quantidade a ser retirada deve ser maior que zero");
+        }
+
+        if (quantidadeRetirada > qtdAtual) {
+            throw new IllegalArgumentException("Quantidade insuficiente de ração");
+        }
+
+        qtdAtual -= quantidadeRetirada;
     }
 }

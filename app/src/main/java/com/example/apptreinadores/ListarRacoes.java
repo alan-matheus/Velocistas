@@ -3,14 +3,19 @@ package com.example.apptreinadores;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.apptreinadores.databinding.ActivityListarRacoesBinding;
@@ -147,6 +152,67 @@ public class ListarRacoes extends AppCompatActivity implements AdapterRacao.OnIt
     @Override
     public void onItemClick(Racao racao) {
 
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialogStyle);
+        builder.setTitle("Retirar Ração");
+
+        // Criar o EditText para inserir a quantidade de ração a ser retirada
+        final EditText quantidadeEditText = new EditText(this);
+        quantidadeEditText.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+        builder.setView(quantidadeEditText);
+
+        builder.setPositiveButton("Retirar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Obter a quantidade digitada pelo usuário
+                String quantidadeStr = quantidadeEditText.getText().toString();
+
+                // Verificar se a quantidade é válida
+                if (!quantidadeStr.isEmpty()) {
+                    Double quantidadeRetirada = Double.parseDouble(quantidadeStr);
+
+                    try {
+                        // Retirar a quantidade especificada da ração
+                        racao.retirarQuantidade(quantidadeRetirada);
+
+                        // Atualizar a quantidade atual do banco de dados
+                        dbHelper.atualizarRacao(racao);
+
+                        // Atualizar a exibição do CardView ou do banco de dados
+                        adapterRacao.notifyDataSetChanged();
+
+                        // Mostrar uma mensagem de sucesso
+                        Toast.makeText(getApplicationContext(), "Ração retirada com sucesso", Toast.LENGTH_SHORT).show();
+                    } catch (IllegalArgumentException e) {
+                        // Mostrar uma mensagem de erro
+                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), "Digite a quantidade a ser retirada", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        // Mostrar o diálogo
+        AlertDialog dialog = builder.create();
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialog) {
+
+                Button positiveButton = ((AlertDialog) dialog).getButton(DialogInterface.BUTTON_POSITIVE);
+                positiveButton.setTextColor(getResources().getColor(R.color.white));
+                Button negativeButton = ((AlertDialog) dialog).getButton(DialogInterface.BUTTON_NEGATIVE);
+                negativeButton.setTextColor(getResources().getColor(R.color.white));
+            }
+        });
+        dialog.show();
     }
 
     private void carregaDados(){

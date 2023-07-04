@@ -43,7 +43,7 @@ public class AdapterRacao extends RecyclerView.Adapter<AdapterRacao.ViewHolder> 
         holder.textViewValor.setText("Valor: UY$ "+Double.toString(racao.getValor()));
         holder.textViewChegada.setText("Chegou: "+racao.getDataChegada());
         holder.textViewQuantidade.setText("Quantidade: "+Double.toString(racao.getQuantidade())+" kg");
-        //holder.textViewQtdAtual.setText(Double.toString(racao.getQtdAtual()));
+        holder.textViewQtdAtual.setText("Tem agora: "+Double.toString(racao.getQtdAtual())+" kg");
 
         holder.opcoes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +74,7 @@ public class AdapterRacao extends RecyclerView.Adapter<AdapterRacao.ViewHolder> 
             textViewValor = itemView.findViewById(R.id.textViewValor);
             textViewChegada = itemView.findViewById(R.id.textViewChegada);
             textViewQuantidade = itemView.findViewById(R.id.textViewQuantidade);
-            //textViewQtdAtual = itemView.findViewById(R.id.textViewQtdAtual);
+            textViewQtdAtual = itemView.findViewById(R.id.textViewQtdAtual);
             opcoes = itemView.findViewById(R.id.opcoes);
             itemView.setOnClickListener(this);
         }

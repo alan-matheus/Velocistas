@@ -10,6 +10,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 
+import androidx.core.view.ViewPropertyAnimatorListener;
+
 import java.util.ArrayList;
 
 import java.util.List;
@@ -33,6 +35,7 @@ public class DBHelperCavalo extends SQLiteOpenHelper {
     private static final String COLUNA_ID_REMEDIO = "id";
     private static final String COLUNA_NOME_REMEDIO = "nome";
     private static final String COLUNA_QUANTIDADE_REMEDIO = "quantidade";
+    private static final String COLUNA_QUANTIDADE_ATUAL_REMEDIO = "qtd_atual";
     private static final String COLUNA_VALOR_REMEDIO = "valor";
     private static final String COLUNA_VALIDADE_REMEDIO = "validade";
     private static final String COLUNA_CHEGADA_REMEDIO = "data_chegada";
@@ -99,6 +102,7 @@ public class DBHelperCavalo extends SQLiteOpenHelper {
                 COLUNA_ID_REMEDIO + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUNA_NOME_REMEDIO + " TEXT, " +
                 COLUNA_QUANTIDADE_REMEDIO + " REAL, " +
+                COLUNA_QUANTIDADE_ATUAL_REMEDIO + " REAL, " +
                 COLUNA_VALOR_REMEDIO + " REAL, " +
                 COLUNA_VALIDADE_REMEDIO + " TEXT, " +
                 COLUNA_CHEGADA_REMEDIO + " TEXT, " +
@@ -240,6 +244,7 @@ public class DBHelperCavalo extends SQLiteOpenHelper {
 
         values.put(COLUNA_NOME, r.getNome());
         values.put(COLUNA_QUANTIDADE_REMEDIO, r.getQuantidade());
+        values.put(COLUNA_QUANTIDADE_ATUAL_REMEDIO, r.getQtdAtual());
         values.put(COLUNA_VALIDADE_REMEDIO, r.getDataVencimento());
         values.put(COLUNA_CHEGADA_REMEDIO, r.getDataChegada());
         values.put(COLUNA_VALOR_REMEDIO, r.getValor());
@@ -302,6 +307,15 @@ public class DBHelperCavalo extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void atualizarRemedio(Remedio r){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUNA_QUANTIDADE_ATUAL_REMEDIO, r.getQtdAtual());
+        db.update(NOME_TABELA_REMEDIO, values, "id = ?", new String[]{String.valueOf(r.getId())});
+
+        db.close();
+    }
+
     public void addRacao(Racao r, Cavalo c){
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -312,6 +326,7 @@ public class DBHelperCavalo extends SQLiteOpenHelper {
         values.put(COLUNA_QUANTIDADE_RACAO, r.getQuantidade());
         values.put(COLUNA_CHEGADA_RACAO, r.getDataChegada());
         values.put(COLUNA_VALOR_RACAO, r.getValor());
+        values.put(COLUNA_QUANTIDADE_ATUAL_RACAO, r.getQtdAtual() );
         values.put(COLUNA_ID_CAVALO_RACAO, c.getId());
 
         db.insert("racao", null, values);
@@ -368,6 +383,15 @@ public class DBHelperCavalo extends SQLiteOpenHelper {
         values.put(COLUNA_VALOR_RACAO, r.getValor());
 
         db.update(NOME_TABELA_RACAO, values, COLUNA_ID_RACAO + " = ?", new String[]{String.valueOf(r.getId())});
+        db.close();
+    }
+
+    public void atualizarRacao(Racao r){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUNA_QUANTIDADE_ATUAL_RACAO, r.getQtdAtual());
+        db.update(NOME_TABELA_RACAO, values, "id = ?", new String[]{String.valueOf(r.getId())});
+
         db.close();
     }
 

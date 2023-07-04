@@ -47,7 +47,7 @@ public class AdapterRemedio extends RecyclerView.Adapter<AdapterRemedio.ViewHold
         holder.textViewChegada.setText("Chegou: "+remedio.getDataChegada());
         holder.textViewVencimento.setText("Vence: "+remedio.getDataVencimento());
         holder.textViewQtdRemedio.setText("Quantidade: "+Double.toString(remedio.getQuantidade()) + " ml");
-
+        holder.textViewQtdAtualRemedio.setText("Ainda tem: "+Double.toString(remedio.getQtdAtual()) + " ml");
         holder.opcoes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -7,7 +7,7 @@ public class Remedio implements Serializable {
     private Integer id;
     private String nome;
     private double quantidade;
-    //private double qtdAtual;
+    private double qtdAtual;
     private double valor;
     private String dataVencimento;
     private String dataChegada;
@@ -21,7 +21,7 @@ public class Remedio implements Serializable {
         this.valor = valor;
         this.dataVencimento = dataVencimento;
         this.dataChegada = dataChegada;
-
+        this.qtdAtual = quantidade;
 
     }
 
@@ -49,7 +49,7 @@ public class Remedio implements Serializable {
         this.quantidade = quantidade;
     }
 
-    /*
+
     public double getQtdAtual() {
         return qtdAtual;
     }
@@ -57,7 +57,7 @@ public class Remedio implements Serializable {
     public void setQtdAtual(double qtdAtual) {
         this.qtdAtual = qtdAtual;
     }
-*/
+
     public double getValor() {
         return valor;
     }
@@ -82,5 +82,15 @@ public class Remedio implements Serializable {
         this.dataChegada = dataChegada;
     }
 
+    public void retirarQuantidade(double quantidadeRetirada) {
+        if (quantidadeRetirada <= 0) {
+            throw new IllegalArgumentException("A quantidade a ser retirada deve ser maior que zero");
+        }
 
+        if (quantidadeRetirada > qtdAtual) {
+            throw new IllegalArgumentException("Quantidade insuficiente de remedio");
+        }
+
+        qtdAtual -= quantidadeRetirada;
+    }
 }
